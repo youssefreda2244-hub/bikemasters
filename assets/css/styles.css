@@ -97,6 +97,8 @@
   .btn-ghost:hover{ border-color:var(--chalk); }
 
   .nav-cta{display:flex; gap:10px;}
+  .admin-link{appearance:none; background:none; border:0; cursor:pointer; color:var(--muted); font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:8px;}
+  .admin-link:hover{color:var(--lime);}
 
   .menu-toggle{display:none; background:none; border:none; color:var(--chalk); font-size:22px; cursor:pointer;}
 
@@ -227,6 +229,33 @@
     font-family:'Space Mono', monospace;
     font-size:12px; text-transform:uppercase;
   }
+  .catalog-message{grid-column:1 / -1; color:var(--muted); font-family:'Space Mono',monospace; font-size:13px; padding:24px 0;}
+
+  /* ---------- ADMIN ---------- */
+  .admin-modal{position:fixed; z-index:500; inset:0; display:grid; place-items:center; padding:22px; background:rgba(0,0,0,.75); overflow:auto;}
+  .admin-modal[hidden]{display:none;}
+  .admin-open{overflow:hidden;}
+  .admin-dialog{position:relative; width:min(920px,100%); max-height:calc(100vh - 44px); overflow:auto; background:var(--surface); border:1px solid var(--hairline); border-radius:var(--radius-m); padding:38px; box-shadow:0 24px 80px rgba(0,0,0,.5);}
+  .admin-dialog h2{font-size:34px; margin:8px 0 12px;}
+  .admin-dialog p{color:var(--muted); max-width:620px;}
+  .admin-close{position:absolute; right:14px; top:10px; color:var(--chalk); background:none; border:0; font-size:32px; line-height:1; cursor:pointer;}
+  .admin-form{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:25px;}
+  .admin-form label{display:grid; gap:7px; color:var(--muted); font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase;}
+  .admin-form input,.admin-form textarea,.admin-form select{width:100%; background:var(--asphalt); border:1px solid var(--hairline); border-radius:var(--radius-s); padding:11px; color:var(--chalk); font:15px 'Work Sans',sans-serif; text-transform:none; letter-spacing:normal;}
+  .admin-form textarea{resize:vertical; line-height:1.45;}
+  .admin-form .full-width{grid-column:1 / -1;}
+  .admin-heading{display:flex; justify-content:space-between; align-items:flex-start; gap:16px;}
+  .admin-note{font-size:14px; margin-top:12px;}
+  .form-actions{display:flex; gap:10px; flex-wrap:wrap;}
+  .admin-status{min-height:24px; margin-top:16px; color:var(--lime)!important; font-family:'Space Mono',monospace; font-size:12px;}
+  .admin-status.is-error{color:#ff8484!important;}
+  .admin-products{margin-top:34px; border-top:1px solid var(--hairline);}
+  .admin-product{display:flex; justify-content:space-between; gap:16px; align-items:center; padding:15px 0; border-bottom:1px solid var(--hairline);}
+  .admin-product strong{display:block; font-family:'Oswald',sans-serif; font-size:20px; text-transform:uppercase;}
+  .admin-product span{color:var(--muted); font-family:'Space Mono',monospace; font-size:11px;}
+  .admin-product>div:last-child{display:flex; gap:8px;}
+  .btn-danger{border-color:#8f3f3f; color:#ff9a9a; background:transparent; cursor:pointer;}
+  .btn-danger:hover{background:#552b2b;}
 
   /* ---------- WIDE GALLERY TICKET (featured build) ---------- */
   .ticket-wide{
@@ -378,4 +407,9 @@
     .hero-actions{ flex-direction:column; }
     .hero-actions .btn{ justify-content:center; }
     .services-grid{ grid-template-columns:1fr; }
+    .admin-link{padding:3px;}
+    .admin-dialog{padding:28px 20px;}
+    .admin-form{grid-template-columns:1fr;}
+    .admin-form .full-width{grid-column:auto;}
+    .admin-product{align-items:flex-start; flex-direction:column;}
   }

@@ -28,6 +28,7 @@
     <div class="nav-cta">
       <a class="btn btn-ghost" href="tel:+201157343199">01157343199</a>
       <a class="btn btn-primary" href="https://wa.me/201501455449" target="_blank" rel="noopener">WhatsApp</a>
+      <button class="admin-link" id="admin-open" type="button" aria-haspopup="dialog">Admin</button>
     </div>
   </nav>
 </header>
@@ -63,77 +64,8 @@
         <p>Every used frame is inspected before it goes up, and every build we're proud of gets a shelf here too. Specs are logged exactly as we see them at intake.</p>
       </div>
 
-      <div class="bikes-grid">
-
-        <article class="ticket">
-          <div class="ticket-photo">
-            <img src="assets/images/image-01.jpg" alt="BMC Road Machine 01, blue, on the shop floor">
-            <span class="ticket-badge">Used · Good condition</span>
-            <span class="ticket-price">18,500 EGP</span>
-          </div>
-          <div class="ticket-body">
-            <h3>BMC Road Machine 01</h3>
-            <div class="ticket-sub">SIZE LARGE (L)</div>
-            <div class="ticket-perf"></div>
-            <ul class="spec-list">
-              <li><span>Groupset</span><span>SRAM Red 12-speed D1</span></li>
-              <li><span>Brakes</span><span>Disc, hydraulic</span></li>
-              <li><span>Wheels</span><span>Zipp 303 carbon</span></li>
-              <li><span>Saddle</span><span>Prologo Scratch NDR carbon</span></li>
-            </ul>
-            <div class="ticket-cta">
-              <a class="btn btn-ghost" style="width:100%; justify-content:center;" href="https://wa.me/201554553024" target="_blank" rel="noopener">Ask about this bike</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="ticket">
-          <div class="ticket-photo">
-            <img src="assets/images/image-03.jpg" alt="TREK Emonda SL5, white, on the shop floor">
-            <span class="ticket-badge">Full carbon frame</span>
-          </div>
-          <div class="ticket-body">
-            <h3>TREK Emonda SL5</h3>
-            <div class="ticket-sub">SIZE 54 · OVERDRIVE STEERER, DISC</div>
-            <div class="ticket-perf"></div>
-            <ul class="spec-list">
-              <li><span>Shifters</span><span>Shimano 105, 12s</span></li>
-              <li><span>Derailleurs</span><span>Shimano 105 F/R</span></li>
-              <li><span>Brakes</span><span>Shimano 105 hydraulic</span></li>
-              <li><span>Cassette</span><span>Shimano 105, 12-speed</span></li>
-            </ul>
-            <div class="ticket-cta">
-              <a class="btn btn-ghost" style="width:100%; justify-content:center;" href="https://wa.me/201157343199" target="_blank" rel="noopener">Ask about this bike</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="ticket ticket-wide">
-          <div class="ticket-photo">
-            <img class="gallery-main" src="assets/images/image-04.jpg" alt="Specialized S-Works road bike, blue and white, side view">
-            <div class="gallery-thumbs">
-              <img src="assets/images/image-05.jpg" alt="Roval cockpit and Dura-Ace shifter detail">
-              <img src="assets/images/image-06.jpg" alt="S-Works down tube and Roval Cotton tire detail">
-              <img src="assets/images/image-07.jpg" alt="Dura-Ace crank and Roval wheel detail">
-            </div>
-            <span class="ticket-badge">Featured build</span>
-          </div>
-          <div class="ticket-body">
-            <h3>Specialized S-Works</h3>
-            <div class="ticket-sub">SHOP FEATURE · FULL BUILD</div>
-            <div class="ticket-perf"></div>
-            <ul class="spec-list">
-              <li><span>Groupset</span><span>Shimano Dura-Ace</span></li>
-              <li><span>Wheels</span><span>Roval, carbon</span></li>
-              <li><span>Tires</span><span>Cotton-wall tubs</span></li>
-              <li><span>Cockpit</span><span>Roval one-piece bar/stem</span></li>
-            </ul>
-            <div class="ticket-cta">
-              <a class="btn btn-ghost" style="width:100%; justify-content:center;" href="https://wa.me/201157343199" target="_blank" rel="noopener">Ask about this build</a>
-            </div>
-          </div>
-        </article>
-
+      <div class="bikes-grid" id="bikes-grid" aria-live="polite">
+        <p class="catalog-message">Loading bikes…</p>
       </div>
     </div>
   </section>
@@ -311,5 +243,42 @@
   </div>
 </footer>
 
+<div class="admin-modal" id="admin-modal" hidden>
+  <div class="admin-dialog" role="dialog" aria-modal="true" aria-labelledby="admin-title">
+    <button class="admin-close" type="button" data-close-admin aria-label="Close">×</button>
+    <div id="login-panel">
+      <span class="eyebrow">Staff access</span>
+      <h2 id="admin-title">Admin login</h2>
+      <p>Sign in with the email and password created in Supabase.</p>
+      <form id="login-form" class="admin-form">
+        <label>Email<input id="login-email" type="email" autocomplete="email" required></label>
+        <label>Password<input id="login-password" type="password" autocomplete="current-password" required></label>
+        <button class="btn btn-primary" type="submit">Sign in</button>
+      </form>
+    </div>
+    <div id="dashboard-panel" hidden>
+      <div class="admin-heading"><div><span class="eyebrow">Staff access</span><h2>Product dashboard</h2></div><button class="btn btn-ghost" id="sign-out" type="button">Sign out</button></div>
+      <p class="admin-note">Add a bike, change its quantity, mark it available or sold out, or edit/delete it. Changes go live immediately.</p>
+      <form id="product-form" class="admin-form product-form">
+        <input id="product-id" type="hidden">
+        <label>Name<input id="product-name" maxlength="120" required placeholder="e.g. Trek Émonda SL5"></label>
+        <label>Price (EGP)<input id="product-price" type="number" min="0" step="1" required></label>
+        <label>Image URL<input id="product-image" type="url" required placeholder="https://… or assets/images/image-01.jpg"></label>
+        <label>Badge / condition<input id="product-badge" maxlength="80" placeholder="Used · Good condition"></label>
+        <label>Size / subtitle<input id="product-subtitle" maxlength="160" placeholder="SIZE 54 · DISC"></label>
+        <label>Quantity<input id="product-quantity" type="number" min="0" step="1" value="1" required></label>
+        <label>Status<select id="product-status"><option value="available">Available</option><option value="sold_out">Sold out</option></select></label>
+        <label class="full-width">Specs (one per line, use <code>Label: value</code>)<textarea id="product-specs" rows="4" placeholder="Groupset: Shimano 105&#10;Brakes: Hydraulic disc"></textarea></label>
+        <div class="form-actions full-width"><button class="btn btn-primary" type="submit" id="save-product">Add product</button><button class="btn btn-ghost" type="button" id="cancel-edit" hidden>Cancel edit</button></div>
+      </form>
+      <div id="admin-products" class="admin-products"></div>
+    </div>
+    <p class="admin-status" id="admin-status" role="status"></p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/app.js" defer></script>
 </body>
 </html>
