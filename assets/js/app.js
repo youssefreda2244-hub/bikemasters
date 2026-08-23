@@ -38,8 +38,10 @@
   async function checkAdmin() {
     const { data: { user } } = await db.auth.getUser();
     if (!user) { isAdmin = false; return false; }
-    const { data, error } = await db.from('admins').select('user_id').eq('user_id', user.id).maybeSingle();
-    isAdmin = Boolean(data) && !error;
+    // This security-definer function is evaluated inside PostgreSQL with auth.uid().
+    // It avoids exposing the admins table to the browser beyond what is necessary.
+    const { data, error } = await db.rpc('is_admin');
+    isAdmin = data === true && !error;
     return isAdmin;
   }
   function openAdmin() {
