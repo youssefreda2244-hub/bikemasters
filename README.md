@@ -88,7 +88,7 @@ Never put a `service_role` key in this project. The included `sb_publishable_...
 
 1. Open the website and click **Admin** in the top-right corner.
 2. Sign in with the administrator email and password from Supabase Authentication.
-3. Add a product or use **Edit** / **Delete**. A quantity of `0` or the **Sold out** status displays the existing sold-out card treatment to visitors.
+3. Add a product or use **Edit** / **Delete**. Choose **Road bike**, **Mountain bike**, or **Kids bike** for every product. Visitors can click the matching category card to see only that type.
 4. For the main image, paste a public image URL. You can also reuse built-in images such as `assets/images/image-01.jpg`.
 5. To show more photos, paste extra public image URLs into **Extra image URLs**, one URL per line. They appear as a small gallery below the main image.
 

@@ -58,8 +58,8 @@
     <div class="wrap">
       <div class="section-head">
         <div>
-          <span class="eyebrow">Currently in the shop</span>
-          <h2>Bikes on the floor</h2>
+          <span class="eyebrow" id="catalog-eyebrow">Currently in the shop</span>
+          <h2 id="catalog-title">Bikes on the floor</h2>
         </div>
         <p>Every used frame is inspected before it goes up, and every build we're proud of gets a shelf here too. Specs are logged exactly as we see them at intake.</p>
       </div>
@@ -81,7 +81,7 @@
       </div>
 
       <div class="category-grid">
-        <a class="category-card" href="https://wa.me/201157343199?text=Looking%20for%20a%20road%20bike" target="_blank" rel="noopener">
+        <a class="category-card" href="#bikes" data-product-category="road">
           <svg class="category-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="16" cy="46" r="10" stroke="currentColor" stroke-width="2.5"/>
             <circle cx="48" cy="46" r="10" stroke="currentColor" stroke-width="2.5"/>
@@ -91,10 +91,10 @@
           </svg>
           <h3>Road bikes</h3>
           <p>Drop bars, narrow tires, built for pace on tarmac.</p>
-          <span class="category-link">Ask what's in stock →</span>
+          <span class="category-link">See road bikes →</span>
         </a>
 
-        <a class="category-card" href="https://wa.me/201157343199?text=Looking%20for%20a%20mountain%20bike" target="_blank" rel="noopener">
+        <a class="category-card" href="#bikes" data-product-category="mountain">
           <svg class="category-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="14" cy="46" r="11" stroke="currentColor" stroke-width="2.5"/>
             <circle cx="50" cy="46" r="11" stroke="currentColor" stroke-width="2.5"/>
@@ -104,10 +104,10 @@
           </svg>
           <h3>Mountain bikes</h3>
           <p>Flat bars, knobby tread, ready for trail and dirt.</p>
-          <span class="category-link">Ask what's in stock →</span>
+          <span class="category-link">See mountain bikes →</span>
         </a>
 
-        <a class="category-card" href="https://wa.me/201157343199?text=Looking%20for%20a%20kids%20bike" target="_blank" rel="noopener">
+        <a class="category-card" href="#bikes" data-product-category="kids">
           <svg class="category-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="18" cy="44" r="8" stroke="currentColor" stroke-width="2.5"/>
             <circle cx="46" cy="44" r="8" stroke="currentColor" stroke-width="2.5"/>
@@ -118,7 +118,7 @@
           </svg>
           <h3>Kids bikes</h3>
           <p>Right-sized frames so the first ride actually fits.</p>
-          <span class="category-link">Ask what's in stock →</span>
+          <span class="category-link">See kids bikes →</span>
         </a>
       </div>
     </div>
@@ -267,6 +267,7 @@
         <label class="full-width">Extra image URLs (one per line)<textarea id="product-gallery" rows="3" placeholder="https://…&#10;https://…"></textarea></label>
         <label>Badge / condition<input id="product-badge" maxlength="80" placeholder="Used · Good condition"></label>
         <label>Size / subtitle<input id="product-subtitle" maxlength="160" placeholder="SIZE 54 · DISC"></label>
+        <label>Category<select id="product-category"><option value="road">Road bike</option><option value="mountain">Mountain bike</option><option value="kids">Kids bike</option></select></label>
         <label>Quantity<input id="product-quantity" type="number" min="0" step="1" value="1" required></label>
         <label>Status<select id="product-status"><option value="available">Available</option><option value="sold_out">Sold out</option></select></label>
         <label class="full-width">Specs (one per line, use <code>Label: value</code>)<textarea id="product-specs" rows="4" placeholder="Groupset: Shimano 105&#10;Brakes: Hydraulic disc"></textarea></label>

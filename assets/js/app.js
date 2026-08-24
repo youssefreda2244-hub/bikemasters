@@ -10,15 +10,19 @@
   };
   if (!config || !window.supabase) { ui.grid.innerHTML = '<p class="catalog-message">Catalog setup is unavailable. Please refresh the page.</p>'; return; }
   const db = window.supabase.createClient(config.supabaseUrl, config.supabasePublishableKey);
-  let products = [], isAdmin = false;
+  let products = [], isAdmin = false, activeCategory = 'all';
   const esc = (value = '') => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   const money = n => new Intl.NumberFormat('en-EG').format(Number(n || 0)) + ' EGP';
   const availability = p => p.status === 'available' && Number(p.quantity) > 0;
   const specs = p => Array.isArray(p.specs) ? p.specs : [];
   const showStatus = (text, bad = false) => { ui.status.textContent = text; ui.status.classList.toggle('is-error', bad); };
   function renderCatalog() {
-    if (!products.length) { ui.grid.innerHTML = '<p class="catalog-message">No bikes are listed right now. Please check back soon.</p>'; return; }
-    ui.grid.innerHTML = products.map(p => {
+    const categoryNames = { road: 'Road bikes', mountain: 'Mountain bikes', kids: 'Kids bikes' };
+    const filteredProducts = activeCategory === 'all' ? products : products.filter(p => p.category === activeCategory);
+    document.querySelector('#catalog-eyebrow').textContent = activeCategory === 'all' ? 'Currently in the shop' : `Currently in the shop · ${categoryNames[activeCategory]}`;
+    document.querySelector('#catalog-title').textContent = activeCategory === 'all' ? 'Bikes on the floor' : categoryNames[activeCategory];
+    if (!filteredProducts.length) { ui.grid.innerHTML = `<p class="catalog-message">No ${activeCategory === 'all' ? '' : categoryNames[activeCategory].toLowerCase() + ' '}are listed right now. <button type="button" class="catalog-reset">Show all bikes</button></p>`; return; }
+    ui.grid.innerHTML = filteredProducts.map(p => {
       const inStock = availability(p);
       const rows = specs(p).slice(0, 6).map(s => `<li><span>${esc(s.label)}</span><span>${esc(s.value)}</span></li>`).join('');
       const message = encodeURIComponent(`Hi Bike Masters, I’d like to ask about ${p.name}.`);
@@ -56,7 +60,7 @@
       name: document.querySelector('#product-name').value.trim(), price: Number(document.querySelector('#product-price').value),
       image_url: document.querySelector('#product-image').value.trim(), badge: document.querySelector('#product-badge').value.trim() || null,
       gallery_urls: document.querySelector('#product-gallery').value.split('\n').map(url => url.trim()).filter(Boolean),
-      subtitle: document.querySelector('#product-subtitle').value.trim() || null, quantity: Number(document.querySelector('#product-quantity').value),
+      subtitle: document.querySelector('#product-subtitle').value.trim() || null, category: document.querySelector('#product-category').value, quantity: Number(document.querySelector('#product-quantity').value),
       status: document.querySelector('#product-status').value,
       specs: rawSpecs.map(line => { const [label, ...rest] = line.split(':'); return { label: label.trim(), value: rest.join(':').trim() || '—' }; })
     };
@@ -86,7 +90,7 @@
     document.querySelector('#product-price').value = p.price ?? ''; document.querySelector('#product-image').value = p.image_url || '';
     document.querySelector('#product-gallery').value = Array.isArray(p.gallery_urls) ? p.gallery_urls.join('\n') : '';
     document.querySelector('#product-badge').value = p.badge || ''; document.querySelector('#product-subtitle').value = p.subtitle || '';
-    document.querySelector('#product-quantity').value = p.quantity ?? 0; document.querySelector('#product-status').value = p.status || 'available';
+    document.querySelector('#product-category').value = p.category || 'road'; document.querySelector('#product-quantity').value = p.quantity ?? 0; document.querySelector('#product-status').value = p.status || 'available';
     document.querySelector('#product-specs').value = specs(p).map(s => `${s.label}: ${s.value}`).join('\n'); ui.save.textContent = 'Save changes'; ui.cancel.hidden = false;
     ui.form.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -101,5 +105,7 @@
   document.querySelector('#sign-out').addEventListener('click', async () => { await db.auth.signOut(); isAdmin = false; ui.dashboard.hidden = true; ui.login.hidden = false; resetForm(); showStatus('Signed out.'); });
   ui.form.addEventListener('submit', saveProduct); ui.cancel.addEventListener('click', resetForm);
   ui.products.addEventListener('click', e => { const edit = e.target.closest('[data-edit]'), del = e.target.closest('[data-delete]'); if (edit) editProduct(edit.dataset.edit); if (del) deleteProduct(del.dataset.delete); });
+  document.querySelectorAll('[data-product-category]').forEach(link => link.addEventListener('click', () => { activeCategory = link.dataset.productCategory; renderCatalog(); }));
+  ui.grid.addEventListener('click', e => { if (e.target.closest('.catalog-reset')) { activeCategory = 'all'; renderCatalog(); } });
   db.auth.onAuthStateChange(() => checkAdmin()); loadProducts();
 })();

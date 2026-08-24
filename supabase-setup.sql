@@ -9,6 +9,7 @@ create table if not exists public.products (
   gallery_urls jsonb not null default '[]'::jsonb,
   badge text,
   subtitle text,
+  category text not null default 'road' check (category in ('road', 'mountain', 'kids')),
   quantity integer not null default 0,
   status text not null default 'available' check (status in ('available', 'sold_out')),
   specs jsonb not null default '[]'::jsonb,
@@ -21,6 +22,7 @@ alter table public.products add column if not exists image_url text;
 alter table public.products add column if not exists gallery_urls jsonb not null default '[]'::jsonb;
 alter table public.products add column if not exists badge text;
 alter table public.products add column if not exists subtitle text;
+alter table public.products add column if not exists category text not null default 'road';
 alter table public.products add column if not exists quantity integer not null default 0;
 alter table public.products add column if not exists status text not null default 'available';
 alter table public.products add column if not exists specs jsonb not null default '[]'::jsonb;
