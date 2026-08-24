@@ -177,6 +177,8 @@
   .ticket:hover{ border-color:#4a525a; transform:translateY(-3px); }
   .ticket-photo{ position:relative; aspect-ratio:4/3; overflow:hidden; }
   .ticket-photo img{ width:100%; height:100%; object-fit:cover; }
+  .product-gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--asphalt);}
+  .product-gallery img{width:100%; aspect-ratio:4/3; object-fit:cover;}
   .ticket-badge{
     position:absolute; top:14px; left:14px;
     background:var(--asphalt);
@@ -244,6 +246,8 @@
   .admin-form input,.admin-form textarea,.admin-form select{width:100%; background:var(--asphalt); border:1px solid var(--hairline); border-radius:var(--radius-s); padding:11px; color:var(--chalk); font:15px 'Work Sans',sans-serif; text-transform:none; letter-spacing:normal;}
   .admin-form textarea{resize:vertical; line-height:1.45;}
   .admin-form .full-width{grid-column:1 / -1;}
+  .admin-dialog [hidden]{display:none!important;}
+  .admin-dialog button.btn-ghost{background-color:var(--asphalt)!important; color:var(--chalk)!important;}
   .admin-heading{display:flex; justify-content:space-between; align-items:flex-start; gap:16px;}
   .admin-note{font-size:14px; margin-top:12px;}
   .form-actions{display:flex; gap:10px; flex-wrap:wrap;}

@@ -25,6 +25,7 @@
       return `<article class="ticket${inStock ? '' : ' ticket--sold-out'}">
         <div class="ticket-photo"><img src="${esc(p.image_url || 'assets/images/image-01.jpg')}" alt="${esc(p.name)}" loading="lazy">
         ${inStock && p.badge ? `<span class="ticket-badge">${esc(p.badge)}</span>` : ''}${inStock ? `<span class="ticket-price">${money(p.price)}</span>` : ''}</div>
+        ${Array.isArray(p.gallery_urls) && p.gallery_urls.length ? `<div class="product-gallery">${p.gallery_urls.slice(0, 6).map(url => `<img src="${esc(url)}" alt="${esc(p.name)} additional view" loading="lazy">`).join('')}</div>` : ''}
         <div class="ticket-body"><h3>${esc(p.name)}</h3><div class="ticket-sub">${esc(p.subtitle || (inStock ? `${p.quantity} IN STOCK` : 'SOLD OUT'))}</div><div class="ticket-perf"></div>
         <ul class="spec-list">${rows || '<li><span>Stock</span><span>Contact shop for details</span></li>'}</ul>
         <div class="ticket-cta">${inStock ? `<a class="btn btn-ghost" style="width:100%; justify-content:center;" href="https://wa.me/${config.whatsappNumber}?text=${message}" target="_blank" rel="noopener">Ask about this bike</a>` : ''}</div></div></article>`;
@@ -54,6 +55,7 @@
     return {
       name: document.querySelector('#product-name').value.trim(), price: Number(document.querySelector('#product-price').value),
       image_url: document.querySelector('#product-image').value.trim(), badge: document.querySelector('#product-badge').value.trim() || null,
+      gallery_urls: document.querySelector('#product-gallery').value.split('\n').map(url => url.trim()).filter(Boolean),
       subtitle: document.querySelector('#product-subtitle').value.trim() || null, quantity: Number(document.querySelector('#product-quantity').value),
       status: document.querySelector('#product-status').value,
       specs: rawSpecs.map(line => { const [label, ...rest] = line.split(':'); return { label: label.trim(), value: rest.join(':').trim() || '—' }; })
@@ -82,6 +84,7 @@
     const p = products.find(x => String(x.id) === String(id)); if (!p) return;
     document.querySelector('#product-id').value = p.id; document.querySelector('#product-name').value = p.name || '';
     document.querySelector('#product-price').value = p.price ?? ''; document.querySelector('#product-image').value = p.image_url || '';
+    document.querySelector('#product-gallery').value = Array.isArray(p.gallery_urls) ? p.gallery_urls.join('\n') : '';
     document.querySelector('#product-badge').value = p.badge || ''; document.querySelector('#product-subtitle').value = p.subtitle || '';
     document.querySelector('#product-quantity').value = p.quantity ?? 0; document.querySelector('#product-status').value = p.status || 'available';
     document.querySelector('#product-specs').value = specs(p).map(s => `${s.label}: ${s.value}`).join('\n'); ui.save.textContent = 'Save changes'; ui.cancel.hidden = false;

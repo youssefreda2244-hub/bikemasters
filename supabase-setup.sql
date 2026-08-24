@@ -6,6 +6,7 @@ create table if not exists public.products (
   name text not null,
   price numeric not null default 0,
   image_url text not null,
+  gallery_urls jsonb not null default '[]'::jsonb,
   badge text,
   subtitle text,
   quantity integer not null default 0,
@@ -17,6 +18,7 @@ create table if not exists public.products (
 alter table public.products add column if not exists name text;
 alter table public.products add column if not exists price numeric not null default 0;
 alter table public.products add column if not exists image_url text;
+alter table public.products add column if not exists gallery_urls jsonb not null default '[]'::jsonb;
 alter table public.products add column if not exists badge text;
 alter table public.products add column if not exists subtitle text;
 alter table public.products add column if not exists quantity integer not null default 0;
