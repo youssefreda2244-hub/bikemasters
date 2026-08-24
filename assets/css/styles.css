@@ -66,10 +66,15 @@
     padding:14px 28px;
     max-width:1180px; margin:0 auto;
   }
-  .brand{display:flex; align-items:center; gap:12px;}
-  .brand img{height:42px; width:42px; border-radius:50%;}
+  .brand{display:flex; align-items:center; gap:12px; perspective:300px;}
+  .brand img{height:42px; width:42px; border-radius:50%; transform-origin:left center; backface-visibility:hidden; animation:logo-door-open .9s cubic-bezier(.2,.8,.2,1) .15s both;}
   .brand-text{font-family:'Oswald', sans-serif; font-weight:600; letter-spacing:.04em; font-size:17px; text-transform:uppercase;}
   .brand-text span{display:block; font-family:'Space Mono', monospace; font-size:10px; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; font-weight:400;}
+  @keyframes logo-door-open{
+    from{opacity:0; transform:rotateY(-95deg);}
+    65%{opacity:1; transform:rotateY(10deg);}
+    to{opacity:1; transform:rotateY(0);}
+  }
 
   .nav-links{display:flex; align-items:center; gap:32px;}
   .nav-links a{
