@@ -105,7 +105,7 @@
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    min-height:100vh;
+    min-height:max(100vh, 940px);
     display:flex; align-items:flex-end;
     overflow:hidden;
     padding-top:90px;
@@ -397,7 +397,7 @@
     .about-grid{ grid-template-columns:1fr; }
     .contact-grid{ grid-template-columns:1fr; }
     section{ padding:72px 0; }
-    .hero{ padding-top:150px; }
+    .hero{ min-height:100vh; padding-top:150px; }
   }
 
   @media (max-width: 600px){
