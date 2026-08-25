@@ -10,6 +10,7 @@ Static website with a Supabase-powered product catalog and private admin dashboa
 - `assets/js/app.js` — catalog rendering, login, and product management
 - `assets/images/` — local image files
 - `supabase-setup.sql` — copy this one-time database and RLS setup into Supabase SQL Editor
+- `supabase-storage-setup.sql` — enables safe admin photo uploads from a computer
 
 ## One-time Supabase setup
 
@@ -89,10 +90,11 @@ Never put a `service_role` key in this project. The included `sb_publishable_...
 1. Open the website and click **Admin** in the top-right corner.
 2. Sign in with the administrator email and password from Supabase Authentication.
 3. Add a product or use **Edit** / **Delete**. Choose **Road bike**, **Mountain bike**, or **Kids bike** for every product. Visitors can click the matching category card to see only that type.
-4. For the main image, paste a public image URL. You can also reuse built-in images such as `assets/images/image-01.jpg`.
-5. To show more photos, paste extra public image URLs into **Extra image URLs**, one URL per line. They appear as a small gallery below the main image.
+4. In Supabase SQL Editor, run the complete contents of `supabase-storage-setup.sql` once. This makes a safe image bucket that only administrators can upload to.
+5. Choose a main photo from your computer. You can choose multiple extra photos from your computer too. Files must be JPG, PNG, or WebP and less than 8 MB each.
+6. Click a bike card to open its own page in the same browser tab. Its photos appear as selectable thumbnails.
 
-The dashboard does not upload files to Supabase Storage; URLs keep this static site simple and avoid adding public upload permissions.
+Photo uploads are protected: everyone may view public product images, but only accounts in `public.admins` may upload them.
 
 ## Publish with GitHub Pages
 

@@ -243,8 +243,9 @@
         <input id="product-id" type="hidden">
         <label>Name<input id="product-name" maxlength="120" required placeholder="e.g. Trek Émonda SL5"></label>
         <label>Price (EGP)<input id="product-price" type="number" min="0" step="1" required></label>
-        <label>Image URL<input id="product-image" type="url" required placeholder="https://… or assets/images/image-01.jpg"></label>
-        <label class="full-width">Extra image URLs (one per line)<textarea id="product-gallery" rows="3" placeholder="https://…&#10;https://…"></textarea></label>
+        <label>Main photo<input id="product-image-file" type="file" accept="image/png,image/jpeg,image/webp" required></label>
+        <label>Extra photos<input id="product-gallery-files" type="file" accept="image/png,image/jpeg,image/webp" multiple></label>
+        <p class="upload-help full-width">Choose photos from your computer. For an existing product, leave the photo fields empty to keep its current photos.</p>
         <label>Badge / condition<input id="product-badge" maxlength="80" placeholder="Used · Good condition"></label>
         <label>Size / subtitle<input id="product-subtitle" maxlength="160" placeholder="SIZE 54 · DISC"></label>
         <label>Category<select id="product-category"><option value="road">Road bike</option><option value="mountain">Mountain bike</option><option value="kids">Kids bike</option></select></label>
