@@ -12,6 +12,20 @@
     const available = p.status === 'available' && Number(p.quantity) > 0;
     const message = encodeURIComponent(`Hi Bike Masters, I’d like to ask about ${p.name}.`);
     target.innerHTML = `<article class="bike-detail"><div class="bike-gallery"><img id="main-bike-photo" src="${esc(photos[0] || 'assets/images/image-01.jpg')}" alt="${esc(p.name)}"><div class="bike-thumbnails">${photos.map((url, i) => `<button class="bike-thumb${i === 0 ? ' is-active' : ''}" type="button" data-photo="${esc(url)}"><img src="${esc(url)}" alt="${esc(p.name)} photo ${i + 1}"></button>`).join('')}</div></div><div class="bike-copy"><span class="eyebrow">${available ? 'Available now' : 'Sold out'}</span><h1>${esc(p.name)}</h1><p class="bike-price">${money(p.price)}</p><p class="bike-subtitle">${esc(p.subtitle || '')}</p><ul class="spec-list">${specs || '<li><span>Details</span><span>Contact shop</span></li>'}</ul>${available ? `<a class="btn btn-primary bike-contact" href="https://wa.me/${config.whatsappNumber}?text=${message}" target="_blank" rel="noopener">Ask about this bike</a>` : '<p class="catalog-message">Currently unavailable.</p>'}</div></article>`;
-    target.addEventListener('click', event => { const button = event.target.closest('[data-photo]'); if (!button) return; document.querySelector('#main-bike-photo').src = button.dataset.photo; document.querySelectorAll('.bike-thumb').forEach(x => x.classList.toggle('is-active', x === button)); });
+    let activePhoto = 0;
+    const showPhoto = index => {
+      activePhoto = (index + photos.length) % photos.length;
+      document.querySelector('#main-bike-photo').src = photos[activePhoto];
+      document.querySelectorAll('.bike-thumb').forEach((x, i) => x.classList.toggle('is-active', i === activePhoto));
+    };
+    target.addEventListener('click', event => { const button = event.target.closest('[data-photo]'); if (!button) return; showPhoto(photos.indexOf(button.dataset.photo)); });
+    const mainPhoto = document.querySelector('#main-bike-photo');
+    let swipeStartX = 0;
+    mainPhoto.addEventListener('touchstart', event => { swipeStartX = event.changedTouches[0].screenX; }, { passive: true });
+    mainPhoto.addEventListener('touchend', event => {
+      const distance = event.changedTouches[0].screenX - swipeStartX;
+      if (Math.abs(distance) < 45 || photos.length < 2) return;
+      showPhoto(activePhoto + (distance < 0 ? 1 : -1));
+    }, { passive: true });
   });
 })();

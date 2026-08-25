@@ -274,7 +274,7 @@
   .bike-page{min-height:100vh; padding:150px 0 90px;}
   .bike-detail{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr); gap:48px; align-items:start;}
   .bike-gallery{background:var(--surface); border:1px solid var(--hairline); border-radius:var(--radius-m); padding:14px;}
-  .bike-gallery>#main-bike-photo{width:100%; aspect-ratio:4/3; object-fit:contain; background:var(--asphalt);}
+  .bike-gallery>#main-bike-photo{width:100%; aspect-ratio:4/3; object-fit:contain; background:var(--asphalt); touch-action:pan-y; user-select:none; -webkit-user-drag:none;}
   .bike-thumbnails{display:flex; gap:8px; overflow:auto; padding-top:10px;}
   .bike-thumb{flex:0 0 88px; height:68px; padding:0; border:1px solid var(--hairline); background:var(--asphalt); cursor:pointer;}
   .bike-thumb.is-active{border-color:var(--lime);}
