@@ -25,12 +25,12 @@
     ui.grid.innerHTML = filteredProducts.map(p => {
       const inStock = availability(p);
       const rows = specs(p).slice(0, 6).map(s => `<li><span>${esc(s.label)}</span><span>${esc(s.value)}</span></li>`).join('');
+      const extraPhotoCount = Array.isArray(p.gallery_urls) ? p.gallery_urls.length : 0;
       const message = encodeURIComponent(`Hi Bike Masters, I’d like to ask about ${p.name}.`);
       return `<article class="ticket${inStock ? '' : ' ticket--sold-out'}">
         <a class="ticket-link" href="bike.html?id=${encodeURIComponent(p.id)}" aria-label="View ${esc(p.name)}">
         <div class="ticket-photo"><img src="${esc(p.image_url || 'assets/images/image-01.jpg')}" alt="${esc(p.name)}" loading="lazy">
-        ${inStock && p.badge ? `<span class="ticket-badge">${esc(p.badge)}</span>` : ''}${inStock ? `<span class="ticket-price">${money(p.price)}</span>` : ''}</div>
-        ${Array.isArray(p.gallery_urls) && p.gallery_urls.length ? `<div class="product-gallery">${p.gallery_urls.slice(0, 6).map(url => `<img src="${esc(url)}" alt="${esc(p.name)} additional view" loading="lazy">`).join('')}</div>` : ''}
+        ${inStock && p.badge ? `<span class="ticket-badge">${esc(p.badge)}</span>` : ''}${inStock ? `<span class="ticket-price">${money(p.price)}</span>` : ''}${extraPhotoCount ? `<span class="ticket-photos" title="${extraPhotoCount} more photos">▣ +${extraPhotoCount}</span>` : ''}</div>
         <div class="ticket-body"><h3>${esc(p.name)}</h3><div class="ticket-sub">${esc(p.subtitle || (inStock ? `${p.quantity} IN STOCK` : 'SOLD OUT'))}</div><div class="ticket-perf"></div>
         <ul class="spec-list">${rows || '<li><span>Stock</span><span>Contact shop for details</span></li>'}</ul>
         <div class="ticket-cta">${inStock ? `<span class="btn btn-ghost" style="width:100%; justify-content:center;">View bike details</span>` : ''}</div></div></a></article>`;
