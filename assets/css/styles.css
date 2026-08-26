@@ -432,7 +432,7 @@
     .brand-text span{ font-size:9px; }
     .nav-links{display:flex; order:3; width:100%; gap:20px; overflow-x:auto; padding:3px 0 5px; scrollbar-width:none;}
     .nav-links::-webkit-scrollbar{display:none;}
-    .nav-links a, .nav-category-toggle{flex:0 0 auto; font-size:10px;}
+    .nav-links a, .nav-category-toggle{flex:0 0 auto; color:var(--chalk); font-size:13px; font-weight:700; letter-spacing:.06em;}
     .wrap{ padding:0 20px; }
     .hero{ padding-top:180px; }
     .meter-line{ font-size:11px; }
