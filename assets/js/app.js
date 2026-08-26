@@ -126,6 +126,28 @@
   document.querySelector('#sign-out').addEventListener('click', async () => { await db.auth.signOut(); isAdmin = false; ui.dashboard.hidden = true; ui.login.hidden = false; resetForm(); showStatus('Signed out.'); });
   ui.form.addEventListener('submit', saveProduct); ui.cancel.addEventListener('click', resetForm);
   ui.products.addEventListener('click', e => { const edit = e.target.closest('[data-edit]'), del = e.target.closest('[data-delete]'); if (edit) editProduct(edit.dataset.edit); if (del) deleteProduct(del.dataset.delete); });
+  const categoryDrawer = document.querySelector('#category-drawer');
+  const categoryToggle = document.querySelector('.nav-category-toggle');
+  function showDrawerView(name = 'main') {
+    categoryDrawer.querySelectorAll('[data-drawer-view]').forEach(view => { view.hidden = view.dataset.drawerView !== name; });
+  }
+  function closeCategoryDrawer() {
+    categoryDrawer.hidden = true; document.body.classList.remove('drawer-open'); categoryToggle.setAttribute('aria-expanded', 'false'); showDrawerView();
+  }
+  function openCategoryDrawer() {
+    categoryDrawer.hidden = false; document.body.classList.add('drawer-open'); categoryToggle.setAttribute('aria-expanded', 'true'); showDrawerView();
+    categoryDrawer.querySelector('.drawer-close').focus();
+  }
+  categoryToggle.addEventListener('click', () => categoryDrawer.hidden ? openCategoryDrawer() : closeCategoryDrawer());
+  categoryDrawer.querySelector('.drawer-close').addEventListener('click', closeCategoryDrawer);
+  categoryDrawer.addEventListener('click', event => {
+    if (event.target === categoryDrawer) return closeCategoryDrawer();
+    const branch = event.target.closest('[data-drawer-branch]');
+    if (branch) showDrawerView(branch.dataset.drawerBranch);
+    if (event.target.closest('[data-drawer-back]')) showDrawerView();
+    if (event.target.closest('[data-product-category]')) closeCategoryDrawer();
+  });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && !categoryDrawer.hidden) closeCategoryDrawer(); });
   document.querySelectorAll('[data-product-category]').forEach(link => link.addEventListener('click', () => { activeCategory = link.dataset.productCategory; renderCatalog(); }));
   ui.grid.addEventListener('click', e => { if (e.target.closest('.catalog-reset')) { activeCategory = 'all'; renderCatalog(); } });
   db.auth.onAuthStateChange(() => checkAdmin()); loadProducts();

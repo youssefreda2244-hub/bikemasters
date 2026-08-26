@@ -20,7 +20,7 @@
     </a>
     <div class="nav-links">
       <a href="#bikes">Bikes</a>
-      <a href="#categories">Categories</a>
+      <button class="nav-category-toggle" type="button" aria-expanded="false" aria-controls="category-drawer">Categories</button>
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
@@ -66,30 +66,6 @@
 
       <div class="bikes-grid" id="bikes-grid" aria-live="polite">
         <p class="catalog-message">Loading bikes…</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="categories">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Browse the shop</span>
-          <h2>Shop categories</h2>
-        </div>
-        <p>Open a category to see the types of gear we carry. Ask us on WhatsApp for current availability.</p>
-      </div>
-
-      <div class="shop-categories">
-        <details class="shop-category" open><summary>Accessories <span>+</span></summary><div class="shop-subcategories">Aerobars · Bike travel bags · Bells · Bike lights · Bottle cages · Bar tape · Bottles · Bike computers · Pumps · Locks · Racks & carriers · Cleaning & care</div></details>
-        <details class="shop-category"><summary>Bikes <span>+</span></summary><div class="shop-subcategories"><a href="#bikes" data-product-category="road">Road bikes</a><a href="#bikes" data-product-category="mountain">Mountain bikes</a><a href="#bikes" data-product-category="kids">Kids bikes</a> · Gravel bikes · E-bikes · Hybrid bikes · BMX bikes · Triathlon bikes · Framesets</div></details>
-        <details class="shop-category"><summary>Clothing <span>+</span></summary><div class="shop-subcategories">Jerseys · Bib shorts · Shorts · Jackets · Base layers · Gloves · Socks · Road shoes · MTB shoes · Helmets · Eyewear</div></details>
-        <details class="shop-category"><summary>Components <span>+</span></summary><div class="shop-subcategories">Groupsets · Chains · Cassettes · Chainrings · Cranksets · Derailleurs · Brakes · Brake pads · Handlebars · Stems · Saddles · Seatposts · Pedals</div></details>
-        <details class="shop-category"><summary>Wheels &amp; tyres <span>+</span></summary><div class="shop-subcategories">Wheelsets · Road tyres · MTB tyres · Inner tubes · Tubeless tyres · Sealant · Valves · Rim tape · Hubs · Spokes</div></details>
-        <details class="shop-category"><summary>Turbo trainers <span>+</span></summary><div class="shop-subcategories">Indoor trainers · Smart trainers · Trainer accessories · Trainer mats · Trainer riser blocks · Sweat covers</div></details>
-        <details class="shop-category"><summary>Triathlon corner <span>+</span></summary><div class="shop-subcategories">Triathlon bikes · Aerobars · Tri suits · Tri shoes · Hydration systems · Open-water swim gear · Race bags</div></details>
-        <details class="shop-category"><summary>Nutrition <span>+</span></summary><div class="shop-subcategories">Energy gels · Energy bars · Electrolytes · Drink mixes · Recovery drinks · Protein · Hydration</div></details>
-        <details class="shop-category"><summary>Sale <span>+</span></summary><div class="shop-subcategories">Ask the shop about current offers and clearance items.</div></details>
       </div>
     </div>
   </section>
@@ -211,6 +187,35 @@
     <span class="fine">© 2026 Bike Masters. Built for riders.</span>
   </div>
 </footer>
+
+<div class="category-drawer" id="category-drawer" hidden>
+  <div class="category-drawer-panel" role="dialog" aria-modal="true" aria-label="Shop categories">
+    <div class="drawer-top"><button class="drawer-close" type="button" aria-label="Close categories">×</button><span class="eyebrow">Shop categories</span></div>
+    <div class="drawer-view" data-drawer-view="main">
+      <button type="button" data-drawer-branch="accessories">Accessories</button>
+      <button type="button" data-drawer-branch="bikes">Bikes</button>
+      <button type="button" data-drawer-branch="clothing">Clothing</button>
+      <button type="button" data-drawer-branch="components">Components</button>
+      <button type="button" data-drawer-branch="wheels">Wheels &amp; tyres</button>
+      <button type="button" data-drawer-branch="trainers">Turbo trainers</button>
+      <button type="button" data-drawer-branch="triathlon">Triathlon corner</button>
+      <button type="button" data-drawer-branch="nutrition">Nutrition</button>
+      <button type="button" data-drawer-branch="sale">Sale</button>
+    </div>
+    <div class="drawer-view" data-drawer-view="bikes" hidden>
+      <button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Bikes</h2>
+      <a href="#bikes" data-product-category="road">Road bikes</a><a href="#bikes" data-product-category="mountain">Mountain bikes</a><a href="#bikes" data-product-category="kids">Kids bikes</a><span>Gravel bikes</span><span>E-bikes</span><span>Hybrid bikes</span><span>BMX bikes</span><span>Triathlon bikes</span><span>Framesets</span>
+    </div>
+    <div class="drawer-view" data-drawer-view="accessories" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Accessories</h2><span>Aerobars</span><span>Travel bags</span><span>Bike lights</span><span>Bottle cages</span><span>Bar tape</span><span>Bike computers</span><span>Pumps</span><span>Locks</span><span>Racks &amp; carriers</span></div>
+    <div class="drawer-view" data-drawer-view="clothing" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Clothing</h2><span>Jerseys</span><span>Bib shorts</span><span>Jackets</span><span>Gloves</span><span>Socks</span><span>Helmets</span><span>Eyewear</span><span>Road shoes</span><span>MTB shoes</span></div>
+    <div class="drawer-view" data-drawer-view="components" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Components</h2><span>Groupsets</span><span>Chains &amp; cassettes</span><span>Brakes</span><span>Handlebars</span><span>Stems</span><span>Saddles</span><span>Seatposts</span><span>Pedals</span></div>
+    <div class="drawer-view" data-drawer-view="wheels" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Wheels &amp; tyres</h2><span>Wheelsets</span><span>Road tyres</span><span>MTB tyres</span><span>Inner tubes</span><span>Tubeless tyres</span><span>Sealant</span><span>Rim tape</span></div>
+    <div class="drawer-view" data-drawer-view="trainers" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Turbo trainers</h2><span>Indoor trainers</span><span>Smart trainers</span><span>Trainer accessories</span><span>Trainer mats</span></div>
+    <div class="drawer-view" data-drawer-view="triathlon" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Triathlon corner</h2><span>Triathlon bikes</span><span>Aerobars</span><span>Tri suits</span><span>Hydration systems</span><span>Race bags</span></div>
+    <div class="drawer-view" data-drawer-view="nutrition" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Nutrition</h2><span>Energy gels</span><span>Energy bars</span><span>Electrolytes</span><span>Drink mixes</span><span>Recovery drinks</span></div>
+    <div class="drawer-view" data-drawer-view="sale" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Sale</h2><span>Ask us about current offers and clearance items.</span></div>
+  </div>
+</div>
 
 <div class="admin-modal" id="admin-modal" hidden>
   <div class="admin-dialog" role="dialog" aria-modal="true" aria-labelledby="admin-title">

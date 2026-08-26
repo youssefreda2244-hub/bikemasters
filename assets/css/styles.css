@@ -77,14 +77,15 @@
   }
 
   .nav-links{display:flex; align-items:center; gap:32px;}
-  .nav-links a{
+  .nav-links a, .nav-category-toggle{
     font-family:'Space Mono', monospace;
     font-size:12px; letter-spacing:.08em; text-transform:uppercase;
     color:var(--muted);
     transition:color .15s ease;
     position:relative;
   }
-  .nav-links a:hover{color:var(--chalk);}
+  .nav-category-toggle{appearance:none; padding:0; border:0; background:transparent; cursor:pointer;}
+  .nav-links a:hover, .nav-category-toggle:hover{color:var(--chalk);}
 
   .btn{
     display:inline-flex; align-items:center; gap:8px;
@@ -444,12 +445,21 @@
     .admin-product{align-items:flex-start; flex-direction:column;}
     .bike-page{padding-top:170px;}
   }
-  .shop-categories{border-top:1px solid var(--hairline);}
-  .shop-category{border-bottom:1px solid var(--hairline);}
-  .shop-category summary{display:flex; justify-content:space-between; align-items:center; gap:20px; padding:23px 4px; cursor:pointer; list-style:none; font:600 clamp(25px,3vw,40px) 'Oswald',sans-serif; letter-spacing:.02em; text-transform:uppercase;}
-  .shop-category summary::-webkit-details-marker{display:none;}
-  .shop-category summary span{font:400 28px 'Space Mono',monospace; color:var(--lime); transition:transform .2s ease;}
-  .shop-category[open] summary span{transform:rotate(45deg);}
-  .shop-subcategories{padding:0 4px 25px; max-width:900px; color:var(--muted); font-size:16px; line-height:1.9;}
-  .shop-subcategories a{color:var(--chalk); text-decoration:underline; text-underline-offset:4px;}
-  .shop-subcategories a:hover{color:var(--lime);}
+  /* ---------- CATEGORY DRAWER ---------- */
+  .category-drawer{position:fixed; inset:0; z-index:300; background:rgba(0,0,0,.58);}
+  .category-drawer[hidden]{display:none;}
+  .category-drawer-panel{width:min(440px,90vw); height:100%; overflow-y:auto; padding:28px 30px 50px; background:var(--surface); border-right:1px solid var(--hairline); box-shadow:20px 0 55px rgba(0,0,0,.3); animation:drawer-slide-in .22s ease-out both;}
+  @keyframes drawer-slide-in{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+  .drawer-top{display:flex; align-items:center; gap:16px; margin-bottom:24px;}
+  .drawer-close{width:42px; height:42px; border:1px solid var(--hairline); background:transparent; color:var(--chalk); font-size:30px; line-height:1; cursor:pointer;}
+  .drawer-close:hover{border-color:var(--lime); color:var(--lime);}
+  .drawer-view h2{margin:18px 0 8px; font-size:clamp(38px,7vw,58px);}
+  .drawer-view > button:not(.drawer-back), .drawer-view > a, .drawer-view > span{width:100%; min-height:60px; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:15px 2px; border:0; border-bottom:1px solid var(--hairline); background:transparent; color:var(--chalk); font:600 clamp(24px,4vw,34px)/1.1 'Oswald',sans-serif; letter-spacing:.02em; text-align:left; text-transform:uppercase;}
+  .drawer-view > button:not(.drawer-back){cursor:pointer;}
+  .drawer-view > button:not(.drawer-back)::after{content:'›'; color:var(--lime); font:400 34px/1 'Work Sans',sans-serif;}
+  .drawer-view > a:hover, .drawer-view > button:not(.drawer-back):hover{color:var(--lime);}
+  .drawer-view > span{color:var(--muted); font-size:20px; cursor:default;}
+  .drawer-back{margin:8px 0 22px; padding:0; border:0; background:transparent; color:var(--muted); cursor:pointer; font:12px 'Space Mono',monospace; letter-spacing:.08em; text-transform:uppercase;}
+  .drawer-back:hover{color:var(--lime);}
+  body.drawer-open{overflow:hidden;}
+  @media (max-width:600px){.category-drawer-panel{width:min(390px,92vw); padding:24px 22px 45px;}.drawer-view > button:not(.drawer-back), .drawer-view > a{min-height:55px; font-size:27px;}}
