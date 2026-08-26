@@ -430,8 +430,6 @@
     nav{ padding:14px 20px; flex-wrap:wrap; row-gap:10px; }
     .brand-text{ font-size:15px; }
     .brand-text span{ font-size:9px; }
-    .nav-cta{ width:100%; }
-    .nav-cta .btn{ flex:1; justify-content:center; }
     .nav-links{display:flex; order:3; width:100%; gap:20px; overflow-x:auto; padding:3px 0 5px; scrollbar-width:none;}
     .nav-links::-webkit-scrollbar{display:none;}
     .nav-links a, .nav-category-toggle{flex:0 0 auto; font-size:10px;}
@@ -447,6 +445,7 @@
     .admin-form .full-width{grid-column:auto;}
     .admin-product{align-items:flex-start; flex-direction:column;}
     .bike-page{padding-top:170px;}
+    .social-row{flex-wrap:wrap;}
   }
   /* ---------- CATEGORY DRAWER ---------- */
   .category-drawer{position:fixed; inset:0; z-index:300; background:rgba(0,0,0,.58);}
