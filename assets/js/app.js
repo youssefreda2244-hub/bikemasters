@@ -17,7 +17,7 @@
   const specs = p => Array.isArray(p.specs) ? p.specs : [];
   const showStatus = (text, bad = false) => { ui.status.textContent = text; ui.status.classList.toggle('is-error', bad); };
   function renderCatalog() {
-    const categoryNames = { road: 'Road bikes', mountain: 'Mountain bikes', kids: 'Kids bikes' };
+    const categoryNames = { road: 'Road bikes', mountain: 'Mountain bikes', kids: 'Kids bikes', gravel: 'Gravel bikes', electric: 'E-bikes', hybrid: 'Hybrid bikes', bmx: 'BMX bikes', triathlon: 'Triathlon', frameset: 'Framesets', accessories: 'Accessories', clothing: 'Clothing', components: 'Components', wheels: 'Wheels & tyres', trainers: 'Turbo trainers', nutrition: 'Nutrition', sale: 'Sale' };
     const filteredProducts = activeCategory === 'all' ? products : products.filter(p => p.category === activeCategory);
     document.querySelector('#catalog-eyebrow').textContent = activeCategory === 'all' ? 'Currently in the shop' : `Currently in the shop · ${categoryNames[activeCategory]}`;
     document.querySelector('#catalog-title').textContent = activeCategory === 'all' ? 'Bikes on the floor' : categoryNames[activeCategory];
