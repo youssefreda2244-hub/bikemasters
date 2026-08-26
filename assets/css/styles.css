@@ -432,9 +432,8 @@
     nav{ padding:14px 20px; flex-wrap:wrap; row-gap:10px; }
     .brand-text{ font-size:15px; }
     .brand-text span{ font-size:9px; }
-    .nav-links{position:static; transform:none; display:flex; justify-content:center; order:3; width:100%; gap:10px; overflow-x:auto; padding:3px 0 5px; scrollbar-width:none;}
-    .nav-links::-webkit-scrollbar{display:none;}
-    .nav-links a, .nav-category-toggle{flex:0 0 auto; color:var(--chalk); font-size:11px; font-weight:700; letter-spacing:.04em;}
+    .nav-links{position:static; transform:none; display:flex; justify-content:stretch; order:3; width:100%; gap:0; overflow:hidden; padding:3px 0 5px;}
+    .nav-links a, .nav-category-toggle{flex:1 1 25%; min-width:0; color:var(--chalk); font-size:13px; font-weight:700; letter-spacing:.03em; text-align:center; white-space:nowrap;}
     .wrap{ padding:0 20px; }
     .hero{ padding-top:180px; }
     .meter-line{ font-size:11px; }
