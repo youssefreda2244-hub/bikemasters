@@ -79,8 +79,8 @@
   .nav-links{display:flex; align-items:center; gap:32px;}
   .nav-links a, .nav-category-toggle{
     font-family:'Space Mono', monospace;
-    font-size:12px; letter-spacing:.08em; text-transform:uppercase;
-    color:var(--muted);
+    font-size:14px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--chalk);
     transition:color .15s ease;
     position:relative;
   }
