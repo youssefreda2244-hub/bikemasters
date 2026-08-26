@@ -27,5 +27,14 @@
       if (Math.abs(distance) < 45 || photos.length < 2) return;
       showPhoto(activePhoto + (distance < 0 ? 1 : -1));
     }, { passive: true });
+    let dragStartX = null;
+    mainPhoto.addEventListener('mousedown', event => { dragStartX = event.screenX; });
+    mainPhoto.addEventListener('mouseup', event => {
+      if (dragStartX === null || photos.length < 2) return;
+      const distance = event.screenX - dragStartX;
+      dragStartX = null;
+      if (Math.abs(distance) >= 45) showPhoto(activePhoto + (distance < 0 ? 1 : -1));
+    });
+    mainPhoto.addEventListener('mouseleave', () => { dragStartX = null; });
   });
 })();

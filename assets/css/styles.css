@@ -444,3 +444,12 @@
     .admin-product{align-items:flex-start; flex-direction:column;}
     .bike-page{padding-top:170px;}
   }
+  .shop-categories{border-top:1px solid var(--hairline);}
+  .shop-category{border-bottom:1px solid var(--hairline);}
+  .shop-category summary{display:flex; justify-content:space-between; align-items:center; gap:20px; padding:23px 4px; cursor:pointer; list-style:none; font:600 clamp(25px,3vw,40px) 'Oswald',sans-serif; letter-spacing:.02em; text-transform:uppercase;}
+  .shop-category summary::-webkit-details-marker{display:none;}
+  .shop-category summary span{font:400 28px 'Space Mono',monospace; color:var(--lime); transition:transform .2s ease;}
+  .shop-category[open] summary span{transform:rotate(45deg);}
+  .shop-subcategories{padding:0 4px 25px; max-width:900px; color:var(--muted); font-size:16px; line-height:1.9;}
+  .shop-subcategories a{color:var(--chalk); text-decoration:underline; text-underline-offset:4px;}
+  .shop-subcategories a:hover{color:var(--lime);}
