@@ -432,8 +432,11 @@
     .brand-text span{ font-size:9px; }
     .nav-cta{ width:100%; }
     .nav-cta .btn{ flex:1; justify-content:center; }
+    .nav-links{display:flex; order:3; width:100%; gap:20px; overflow-x:auto; padding:3px 0 5px; scrollbar-width:none;}
+    .nav-links::-webkit-scrollbar{display:none;}
+    .nav-links a, .nav-category-toggle{flex:0 0 auto; font-size:10px;}
     .wrap{ padding:0 20px; }
-    .hero{ padding-top:130px; }
+    .hero{ padding-top:180px; }
     .meter-line{ font-size:11px; }
     .hero-actions{ flex-direction:column; }
     .hero-actions .btn{ justify-content:center; }
