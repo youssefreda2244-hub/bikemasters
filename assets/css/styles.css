@@ -86,8 +86,8 @@
     transition:color .15s ease;
     position:relative;
   }
-  .nav-category-toggle{appearance:none; display:inline-flex; align-items:center; gap:6px; padding:0 0 8px; border:0; background:transparent; cursor:pointer;}
-  .nav-category-toggle span{display:inline-block; margin:0; font:700 22px/1 'Work Sans',sans-serif; transform:translateY(-1px); transition:transform .15s ease;}
+  .nav-category-toggle{appearance:none; display:inline-flex; align-items:center; gap:2px; padding:0 0 8px; border:0; background:transparent; cursor:pointer;}
+  .nav-category-toggle span{display:inline-block; margin-left:-5px; font:700 22px/1 'Work Sans',sans-serif; transform:translateY(-1px); transition:transform .15s ease;}
   .nav-category-toggle::after{content:''; position:absolute; left:0; right:0; bottom:0; height:3px; background:currentColor; transform:scaleX(0); transform-origin:center; transition:transform .15s ease;}
   .nav-category-toggle:hover::after, .nav-category-toggle[aria-expanded="true"]::after{transform:scaleX(1);}
   .nav-category-toggle:hover span, .nav-category-toggle[aria-expanded="true"] span{transform:translateY(4px);}
@@ -449,8 +449,8 @@
     .brand-text span{ font-size:10px; margin-top:2px; }
     .nav-cta{position:absolute; top:103px; right:28px;}
     .nav-links{position:static; transform:none; display:flex; justify-content:stretch; order:3; width:100%; gap:0; overflow:hidden; padding:8px 0 2px;}
-    .nav-category-toggle{display:none;}
-    .nav-links a{flex:1 1 33.33%; min-width:0; color:var(--chalk); font-size:14px; font-weight:700; letter-spacing:.02em; text-align:center; white-space:nowrap;}
+    .nav-category-toggle{display:inline-flex; flex:1 1 20%; min-width:0; justify-content:center; padding-bottom:8px; color:var(--chalk); font-size:14px; font-weight:700; letter-spacing:.02em; white-space:nowrap;}
+    .nav-links a{flex:1 1 20%; min-width:0; color:var(--chalk); font-size:14px; font-weight:700; letter-spacing:.02em; text-align:center; white-space:nowrap;}
     .wrap{ padding:0 20px; }
     .hero{ padding-top:220px; }
     .meter-line{ font-size:11px; }
