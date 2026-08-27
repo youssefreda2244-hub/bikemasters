@@ -130,7 +130,8 @@
   const categoryToggle = document.querySelector('.nav-category-toggle');
   const mobileMenuToggle = document.querySelector('#mobile-menu-toggle');
   let subcategoryParent = 'main';
-  categoryDrawer.querySelectorAll('[data-drawer-view] > span').forEach(item => item.classList.add('drawer-item'));
+  // Every item inside a category opens its own subcategory view.
+  categoryDrawer.querySelectorAll('[data-drawer-view] > span, [data-drawer-view] > a[data-product-category]').forEach(item => item.classList.add('drawer-item'));
   function showDrawerView(name = 'main') {
     categoryDrawer.querySelectorAll('[data-drawer-view]').forEach(view => { view.hidden = view.dataset.drawerView !== name; });
   }
@@ -153,12 +154,12 @@
   categoryDrawer.querySelector('.drawer-close').addEventListener('click', closeCategoryDrawer);
   categoryDrawer.addEventListener('click', event => {
     if (event.target === categoryDrawer) return closeCategoryDrawer();
+    const back = event.target.closest('[data-drawer-back]');
+    if (back) return showDrawerView(document.querySelector('#drawer-subview').hidden ? 'main' : subcategoryParent);
     const branch = event.target.closest('[data-drawer-branch]');
-    if (branch) showDrawerView(branch.dataset.drawerBranch);
+    if (branch) return showDrawerView(branch.dataset.drawerBranch);
     const item = event.target.closest('.drawer-item');
-    if (item) showSubcategory(item);
-    if (event.target.closest('[data-drawer-back]')) showDrawerView(document.querySelector('#drawer-subview').hidden ? 'main' : subcategoryParent);
-    if (event.target.closest('[data-product-category]')) closeCategoryDrawer();
+    if (item) { event.preventDefault(); return showSubcategory(item); }
   });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && !categoryDrawer.hidden) closeCategoryDrawer(); });
   const searchModal = document.querySelector('#search-modal');
