@@ -87,10 +87,11 @@
     position:relative;
   }
   .nav-category-toggle{appearance:none; display:inline-flex; align-items:center; gap:2px; padding:0 0 8px; border:0; background:transparent; cursor:pointer;}
-  .nav-category-toggle span{display:inline-block; margin-left:-5px; font:700 22px/1 'Work Sans',sans-serif; transform:translateY(-1px); transition:transform .15s ease;}
+  .nav-category-toggle span{display:inline-block; position:relative; width:13px; height:13px; margin-left:1px; font-size:0; transform:translateY(-2px); transition:transform .15s ease;}
+  .nav-category-toggle span::before{content:''; position:absolute; width:8px; height:8px; left:1px; top:0; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:rotate(45deg);}
   .nav-category-toggle::after{content:''; position:absolute; left:0; right:0; bottom:0; height:3px; background:currentColor; transform:scaleX(0); transform-origin:center; transition:transform .15s ease;}
   .nav-category-toggle:hover::after, .nav-category-toggle[aria-expanded="true"]::after{transform:scaleX(1);}
-  .nav-category-toggle:hover span, .nav-category-toggle[aria-expanded="true"] span{transform:translateY(4px);}
+  .nav-category-toggle:hover span, .nav-category-toggle[aria-expanded="true"] span{transform:translateY(1px);}
   .nav-links a:hover, .nav-category-toggle:hover, .nav-search-toggle:hover{color:var(--lime); animation:nav-hover-pop .18s ease-out both;}
   @keyframes nav-hover-pop{from{transform:translateY(0)}to{transform:translateY(-2px)}}
   .nav-search-toggle{appearance:none; position:relative; width:38px; height:38px; border:0; background:transparent; color:var(--chalk); cursor:pointer; font-size:0; padding:0;}
