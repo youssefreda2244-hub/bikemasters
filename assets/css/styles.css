@@ -483,6 +483,12 @@
   .drawer-view > span.drawer-item{cursor:pointer;}
   .drawer-view > span.drawer-item:hover{color:var(--lime);}
   .drawer-subcopy{color:var(--muted); font-size:17px; margin:18px 0 24px; max-width:34ch;}
+  .drawer-products{display:grid; gap:10px; margin:18px 0 22px;}
+  .drawer-product{display:grid; grid-template-columns:64px 1fr; gap:10px; align-items:center; padding:8px; border:1px solid var(--hairline); color:var(--chalk);}
+  .drawer-product img{width:64px; height:64px; object-fit:cover; grid-row:span 2;}
+  .drawer-product span{font:600 16px/1.1 'Oswald',sans-serif; text-transform:uppercase;}
+  .drawer-product b{font:12px 'Space Mono',monospace; color:var(--lime);}
+  .drawer-product:hover{border-color:var(--lime);}
   .drawer-product-link{display:flex; width:100%; border:1px solid var(--hairline); padding:16px 18px; color:var(--chalk); font:14px 'Space Mono',monospace; text-transform:uppercase;}
   .drawer-product-link:hover{border-color:var(--lime); color:var(--lime);}
   .drawer-back{margin:8px 0 22px; padding:0; border:0; background:transparent; color:var(--muted); cursor:pointer; font:12px 'Space Mono',monospace; letter-spacing:.08em; text-transform:uppercase;}
