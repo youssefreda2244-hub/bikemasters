@@ -19,10 +19,11 @@
       <span class="brand-text">Bike Masters<span>Cairo, Egypt · Est. 2018</span></span>
     </a>
     <div class="nav-links">
-      <button class="nav-category-toggle" type="button" aria-expanded="false" aria-controls="category-drawer">Categories</button>
+      <button class="nav-category-toggle" type="button" aria-expanded="false" aria-controls="category-drawer">Shop <span aria-hidden="true">⌄</span></button>
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
+      <button class="nav-search-toggle" id="search-open" type="button" aria-label="Search products" aria-haspopup="dialog">⌕</button>
     </div>
     <div class="nav-cta">
       <button class="admin-link" id="admin-open" type="button" aria-haspopup="dialog">Admin</button>
@@ -187,6 +188,18 @@
   </div>
 </footer>
 
+<div class="search-modal" id="search-modal" hidden>
+  <div class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="search-title">
+    <div class="search-header"><span class="eyebrow" id="search-title">Search the shop</span><button class="search-close" type="button" data-search-close aria-label="Close search">×</button></div>
+    <div class="search-bar">
+      <select id="search-category" aria-label="Choose a category"><option value="all">All categories</option><option value="road">Road bikes</option><option value="mountain">Mountain bikes</option><option value="kids">Kids bikes</option><option value="gravel">Gravel bikes</option><option value="electric">E-bikes</option><option value="hybrid">Hybrid bikes</option><option value="bmx">BMX bikes</option><option value="triathlon">Triathlon</option><option value="frameset">Framesets</option><option value="accessories">Accessories</option><option value="clothing">Clothing</option><option value="components">Components</option><option value="wheels">Wheels &amp; tyres</option><option value="trainers">Turbo trainers</option><option value="nutrition">Nutrition</option><option value="sale">Sale</option></select>
+      <input id="search-input" type="search" autocomplete="off" placeholder="Search bikes, parts and accessories">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+    </div>
+    <div class="search-results" id="search-results"><p>Start typing to search the shop.</p></div>
+  </div>
+</div>
+
 <div class="category-drawer" id="category-drawer" hidden>
   <div class="category-drawer-panel" role="dialog" aria-modal="true" aria-label="Shop categories">
     <div class="drawer-top"><button class="drawer-close" type="button" aria-label="Close categories">×</button><span class="eyebrow">Shop categories</span></div>
@@ -205,14 +218,14 @@
       <button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Bikes</h2>
       <a href="#bikes" data-product-category="road">Road bikes</a><a href="#bikes" data-product-category="mountain">Mountain bikes</a><a href="#bikes" data-product-category="kids">Kids bikes</a><a href="#bikes" data-product-category="gravel">Gravel bikes</a><a href="#bikes" data-product-category="electric">E-bikes</a><a href="#bikes" data-product-category="hybrid">Hybrid bikes</a><a href="#bikes" data-product-category="bmx">BMX bikes</a><a href="#bikes" data-product-category="triathlon">Triathlon bikes</a><a href="#bikes" data-product-category="frameset">Framesets</a>
     </div>
-    <div class="drawer-view" data-drawer-view="accessories" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Accessories</h2><a href="#bikes" data-product-category="accessories">View all accessories</a><span>Aerobars · Travel bags · Bike lights · Bottle cages · Bar tape · Bike computers · Pumps · Locks · Racks &amp; carriers</span></div>
-    <div class="drawer-view" data-drawer-view="clothing" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Clothing</h2><a href="#bikes" data-product-category="clothing">View all clothing</a><span>Jerseys · Bib shorts · Jackets · Gloves · Socks · Helmets · Eyewear · Road shoes · MTB shoes</span></div>
-    <div class="drawer-view" data-drawer-view="components" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Components</h2><a href="#bikes" data-product-category="components">View all components</a><span>Groupsets · Chains &amp; cassettes · Brakes · Handlebars · Stems · Saddles · Seatposts · Pedals</span></div>
-    <div class="drawer-view" data-drawer-view="wheels" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Wheels &amp; tyres</h2><a href="#bikes" data-product-category="wheels">View all wheels &amp; tyres</a><span>Wheelsets · Road tyres · MTB tyres · Inner tubes · Tubeless tyres · Sealant · Rim tape</span></div>
-    <div class="drawer-view" data-drawer-view="trainers" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Turbo trainers</h2><a href="#bikes" data-product-category="trainers">View all turbo trainers</a><span>Indoor trainers · Smart trainers · Trainer accessories · Trainer mats</span></div>
-    <div class="drawer-view" data-drawer-view="triathlon" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Triathlon corner</h2><a href="#bikes" data-product-category="triathlon">View all triathlon</a><span>Triathlon bikes · Aerobars · Tri suits · Hydration systems · Race bags</span></div>
-    <div class="drawer-view" data-drawer-view="nutrition" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Nutrition</h2><a href="#bikes" data-product-category="nutrition">View all nutrition</a><span>Energy gels · Energy bars · Electrolytes · Drink mixes · Recovery drinks</span></div>
-    <div class="drawer-view" data-drawer-view="sale" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Sale</h2><a href="#bikes" data-product-category="sale">View all sale items</a><span>Ask us about current offers and clearance items.</span></div>
+    <div class="drawer-view" data-drawer-view="accessories" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Accessories</h2><span>Aerobars</span><span>Travel bags</span><span>Bike lights</span><span>Bottle cages</span><span>Bar tape</span><span>Bike computers</span><span>Pumps</span><span>Locks</span><span>Racks &amp; carriers</span></div>
+    <div class="drawer-view" data-drawer-view="clothing" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Clothing</h2><span>Jerseys</span><span>Bib shorts</span><span>Jackets</span><span>Gloves</span><span>Socks</span><span>Helmets</span><span>Eyewear</span><span>Road shoes</span><span>MTB shoes</span></div>
+    <div class="drawer-view" data-drawer-view="components" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Components</h2><span>Groupsets</span><span>Chains &amp; cassettes</span><span>Brakes</span><span>Handlebars</span><span>Stems</span><span>Saddles</span><span>Seatposts</span><span>Pedals</span></div>
+    <div class="drawer-view" data-drawer-view="wheels" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Wheels &amp; tyres</h2><span>Wheelsets</span><span>Road tyres</span><span>MTB tyres</span><span>Inner tubes</span><span>Tubeless tyres</span><span>Sealant</span><span>Rim tape</span></div>
+    <div class="drawer-view" data-drawer-view="trainers" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Turbo trainers</h2><span>Indoor trainers</span><span>Smart trainers</span><span>Trainer accessories</span><span>Trainer mats</span></div>
+    <div class="drawer-view" data-drawer-view="triathlon" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Triathlon corner</h2><span>Triathlon bikes</span><span>Aerobars</span><span>Tri suits</span><span>Hydration systems</span><span>Race bags</span></div>
+    <div class="drawer-view" data-drawer-view="nutrition" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Nutrition</h2><span>Energy gels</span><span>Energy bars</span><span>Electrolytes</span><span>Drink mixes</span><span>Recovery drinks</span></div>
+    <div class="drawer-view" data-drawer-view="sale" hidden><button class="drawer-back" type="button" data-drawer-back>← Back</button><h2>Sale</h2><span>Current offers</span><span>Clearance items</span></div>
   </div>
 </div>
 

@@ -148,6 +148,26 @@
     if (event.target.closest('[data-product-category]')) closeCategoryDrawer();
   });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && !categoryDrawer.hidden) closeCategoryDrawer(); });
+  const searchModal = document.querySelector('#search-modal');
+  const searchInput = document.querySelector('#search-input');
+  const searchCategory = document.querySelector('#search-category');
+  const searchResults = document.querySelector('#search-results');
+  function closeSearch() { searchModal.hidden = true; document.body.classList.remove('search-open'); }
+  function renderSearchResults() {
+    const term = searchInput.value.trim().toLowerCase();
+    const category = searchCategory.value;
+    if (!term && category === 'all') { searchResults.innerHTML = '<p>Start typing to search the shop.</p>'; return; }
+    const found = products.filter(product => {
+      const text = [product.name, product.subtitle, product.badge, product.category, ...(specs(product).flatMap(item => [item.label, item.value]))].join(' ').toLowerCase();
+      return (category === 'all' || product.category === category) && (!term || text.includes(term));
+    });
+    searchResults.innerHTML = found.length ? found.map(product => `<a class="search-result" href="bike.html?id=${encodeURIComponent(product.id)}"><img src="${esc(product.image_url || 'assets/images/image-01.jpg')}" alt=""><div><strong>${esc(product.name)}</strong><span>${money(product.price)} · ${availability(product) ? 'In stock' : 'Sold out'}</span></div></a>`).join('') : '<p>No matching products found.</p>';
+  }
+  document.querySelector('#search-open').addEventListener('click', () => { searchModal.hidden = false; document.body.classList.add('search-open'); searchInput.focus(); renderSearchResults(); });
+  document.querySelectorAll('[data-search-close]').forEach(button => button.addEventListener('click', closeSearch));
+  searchModal.addEventListener('click', event => { if (event.target === searchModal) closeSearch(); });
+  searchInput.addEventListener('input', renderSearchResults); searchCategory.addEventListener('change', renderSearchResults);
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && !searchModal.hidden) closeSearch(); });
   document.querySelectorAll('[data-product-category]').forEach(link => link.addEventListener('click', () => { activeCategory = link.dataset.productCategory; renderCatalog(); }));
   ui.grid.addEventListener('click', e => { if (e.target.closest('.catalog-reset')) { activeCategory = 'all'; renderCatalog(); } });
   db.auth.onAuthStateChange(() => checkAdmin()); loadProducts();
