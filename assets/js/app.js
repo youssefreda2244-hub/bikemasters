@@ -128,17 +128,19 @@
   ui.products.addEventListener('click', e => { const edit = e.target.closest('[data-edit]'), del = e.target.closest('[data-delete]'); if (edit) editProduct(edit.dataset.edit); if (del) deleteProduct(del.dataset.delete); });
   const categoryDrawer = document.querySelector('#category-drawer');
   const categoryToggle = document.querySelector('.nav-category-toggle');
+  const mobileMenuToggle = document.querySelector('#mobile-menu-toggle');
   function showDrawerView(name = 'main') {
     categoryDrawer.querySelectorAll('[data-drawer-view]').forEach(view => { view.hidden = view.dataset.drawerView !== name; });
   }
   function closeCategoryDrawer() {
-    categoryDrawer.hidden = true; document.body.classList.remove('drawer-open'); categoryToggle.setAttribute('aria-expanded', 'false'); showDrawerView();
+    categoryDrawer.hidden = true; document.body.classList.remove('drawer-open'); categoryToggle.setAttribute('aria-expanded', 'false'); mobileMenuToggle.setAttribute('aria-expanded', 'false'); showDrawerView();
   }
   function openCategoryDrawer() {
-    categoryDrawer.hidden = false; document.body.classList.add('drawer-open'); categoryToggle.setAttribute('aria-expanded', 'true'); showDrawerView();
+    categoryDrawer.hidden = false; document.body.classList.add('drawer-open'); categoryToggle.setAttribute('aria-expanded', 'true'); mobileMenuToggle.setAttribute('aria-expanded', 'true'); showDrawerView();
     categoryDrawer.querySelector('.drawer-close').focus();
   }
   categoryToggle.addEventListener('click', () => categoryDrawer.hidden ? openCategoryDrawer() : closeCategoryDrawer());
+  mobileMenuToggle.addEventListener('click', () => categoryDrawer.hidden ? openCategoryDrawer() : closeCategoryDrawer());
   categoryDrawer.querySelector('.drawer-close').addEventListener('click', closeCategoryDrawer);
   categoryDrawer.addEventListener('click', event => {
     if (event.target === categoryDrawer) return closeCategoryDrawer();
