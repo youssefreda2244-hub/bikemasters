@@ -129,8 +129,17 @@
   const categoryDrawer = document.querySelector('#category-drawer');
   const categoryToggle = document.querySelector('.nav-category-toggle');
   const mobileMenuToggle = document.querySelector('#mobile-menu-toggle');
+  let subcategoryParent = 'main';
+  categoryDrawer.querySelectorAll('[data-drawer-view] > span').forEach(item => item.classList.add('drawer-item'));
   function showDrawerView(name = 'main') {
     categoryDrawer.querySelectorAll('[data-drawer-view]').forEach(view => { view.hidden = view.dataset.drawerView !== name; });
+  }
+  function showSubcategory(item) {
+    const title = item.textContent.trim();
+    subcategoryParent = item.closest('[data-drawer-view]').dataset.drawerView;
+    document.querySelector('#drawer-subtitle').textContent = title;
+    document.querySelector('#drawer-subcategory-link').href = '#bikes';
+    showDrawerView('subcategory');
   }
   function closeCategoryDrawer() {
     categoryDrawer.hidden = true; document.body.classList.remove('drawer-open'); categoryToggle.setAttribute('aria-expanded', 'false'); mobileMenuToggle.setAttribute('aria-expanded', 'false'); showDrawerView();
@@ -146,7 +155,9 @@
     if (event.target === categoryDrawer) return closeCategoryDrawer();
     const branch = event.target.closest('[data-drawer-branch]');
     if (branch) showDrawerView(branch.dataset.drawerBranch);
-    if (event.target.closest('[data-drawer-back]')) showDrawerView();
+    const item = event.target.closest('.drawer-item');
+    if (item) showSubcategory(item);
+    if (event.target.closest('[data-drawer-back]')) showDrawerView(document.querySelector('#drawer-subview').hidden ? 'main' : subcategoryParent);
     if (event.target.closest('[data-product-category]')) closeCategoryDrawer();
   });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && !categoryDrawer.hidden) closeCategoryDrawer(); });

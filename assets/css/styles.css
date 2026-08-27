@@ -479,6 +479,11 @@
   .drawer-view > button:not(.drawer-back)::after{content:'›'; color:var(--lime); font:400 34px/1 'Work Sans',sans-serif;}
   .drawer-view > a:hover, .drawer-view > button:not(.drawer-back):hover{color:var(--lime);}
   .drawer-view > span{color:var(--chalk); font-size:clamp(24px,4vw,34px); cursor:default;}
+  .drawer-view > span.drawer-item{cursor:pointer;}
+  .drawer-view > span.drawer-item:hover{color:var(--lime);}
+  .drawer-subcopy{color:var(--muted); font-size:17px; margin:18px 0 24px; max-width:34ch;}
+  .drawer-product-link{display:flex; width:100%; border:1px solid var(--hairline); padding:16px 18px; color:var(--chalk); font:14px 'Space Mono',monospace; text-transform:uppercase;}
+  .drawer-product-link:hover{border-color:var(--lime); color:var(--lime);}
   .drawer-back{margin:8px 0 22px; padding:0; border:0; background:transparent; color:var(--muted); cursor:pointer; font:12px 'Space Mono',monospace; letter-spacing:.08em; text-transform:uppercase;}
   .drawer-back:hover{color:var(--lime);}
   body.drawer-open{overflow:hidden;}
