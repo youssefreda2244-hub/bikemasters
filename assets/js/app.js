@@ -144,8 +144,12 @@
   function showSubcategory(item) {
     const title = item.textContent.trim();
     subcategoryParent = item.closest('[data-drawer-view]').dataset.drawerView;
+    const category = item.dataset.productCategory || subcategoryParent;
+    if (category !== 'main') {
+      window.location.href = `category.html?category=${encodeURIComponent(category)}`;
+      return;
+    }
     document.querySelector('#drawer-subtitle').textContent = title;
-    const category = item.dataset.productCategory || (subcategoryParent === 'bikes' ? 'road' : subcategoryParent);
     const matches = products.filter(product => normalizeCategory(product.category) === category);
     document.querySelector('#drawer-products').innerHTML = matches.length ? matches.map(product => `<a class="drawer-product" href="bike.html?id=${encodeURIComponent(product.id)}"><img src="${esc(product.image_url || 'assets/images/image-01.jpg')}" alt="${esc(product.name)}"><span>${esc(product.name)}</span><b>${money(product.price)}</b></a>`).join('') : '<p class="drawer-subcopy">No products in this category yet.</p>';
     document.querySelector('#drawer-subcategory-link').href = '#bikes';

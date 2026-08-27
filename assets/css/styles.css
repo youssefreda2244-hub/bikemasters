@@ -492,6 +492,9 @@
   .drawer-product span{font:600 16px/1.1 'Oswald',sans-serif; text-transform:uppercase;}
   .drawer-product b{font:12px 'Space Mono',monospace; color:var(--lime);}
   .drawer-product:hover{border-color:var(--lime);}
+  .category-page{padding-top:150px; padding-bottom:80px; min-height:100vh;}
+  .category-page h1{font-size:clamp(48px,8vw,92px); margin:10px 0 38px;}
+  .category-page .bikes-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px;}
   .drawer-product-link{display:flex; width:100%; border:1px solid var(--hairline); padding:16px 18px; color:var(--chalk); font:14px 'Space Mono',monospace; text-transform:uppercase;}
   .drawer-product-link:hover{border-color:var(--lime); color:var(--lime);}
   .drawer-back{margin:8px 0 22px; padding:0; border:0; background:transparent; color:var(--muted); cursor:pointer; font:12px 'Space Mono',monospace; letter-spacing:.08em; text-transform:uppercase;}
