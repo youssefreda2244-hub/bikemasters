@@ -139,6 +139,7 @@
   categoryDrawer.querySelectorAll('[data-drawer-view] > span, [data-drawer-view] > a[data-product-category]').forEach(item => item.classList.add('drawer-item'));
   function showDrawerView(name = 'main') {
     categoryDrawer.querySelectorAll('[data-drawer-view]').forEach(view => { view.hidden = view.dataset.drawerView !== name; });
+    categoryDrawer.classList.toggle('drawer-full-view', name === 'subcategory');
   }
   function showSubcategory(item) {
     const title = item.textContent.trim();
