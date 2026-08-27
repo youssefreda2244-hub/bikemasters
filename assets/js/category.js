@@ -14,6 +14,6 @@
   db.from('products').select('*').order('created_at', { ascending: false }).then(({data, error}) => {
     if (error) { grid.innerHTML = '<p class="catalog-message">The catalog is temporarily unavailable.</p>'; return; }
     const products = (data || []).filter(p => String(p.category || '').toLowerCase().replace(/[\s_-]+/g, '') === category.replace(/[\s_-]+/g, '') || (category === 'road' && /road/.test(String(p.category || '').toLowerCase())));
-    grid.innerHTML = products.length ? products.map(p => `<article class="ticket"><a class="ticket-link" href="bike.html?id=${encodeURIComponent(p.id)}"><div class="ticket-photo"><img src="${p.image_url || 'assets/images/image-01.jpg'}" alt="${p.name || ''}"><span class="ticket-price">${money(p.price)}</span></div><div class="ticket-body"><h3>${p.name || ''}</h3><div class="ticket-sub">${p.subtitle || ''}</div></div></a></article>`).join('') : '<p class="catalog-message">No products are listed in this category yet.</p>';
+    grid.innerHTML = products.length ? products.map(p => `<article class="ticket"><a class="ticket-link" href="bike.html?id=${encodeURIComponent(p.id)}"><div class="ticket-photo"><img src="${p.image_url || 'assets/images/image-01.jpg'}" alt="${p.name || ''}"></div><div class="ticket-body"><h3>${p.name || ''}</h3><div class="ticket-price drawer-page-price">${money(p.price)}</div><div class="ticket-sub">${p.subtitle || ''}</div></div></a></article>`).join('') : '<p class="catalog-message">No products are listed in this category yet.</p>';
   });
 })();
