@@ -159,7 +159,13 @@
     const branch = event.target.closest('[data-drawer-branch]');
     if (branch) return showDrawerView(branch.dataset.drawerBranch);
     const item = event.target.closest('.drawer-item');
-    if (item) { event.preventDefault(); return showSubcategory(item); }
+    if (item) {
+      // Keep the drawer on the item's own branch; do not let the catalog
+      // listener treat this as a direct jump back to the main Bikes section.
+      event.preventDefault();
+      event.stopPropagation();
+      return showSubcategory(item);
+    }
   });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && !categoryDrawer.hidden) closeCategoryDrawer(); });
   const searchModal = document.querySelector('#search-modal');
