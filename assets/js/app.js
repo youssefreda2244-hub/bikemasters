@@ -16,9 +16,14 @@
   const availability = p => p.status === 'available' && Number(p.quantity) > 0;
   const specs = p => Array.isArray(p.specs) ? p.specs : [];
   const showStatus = (text, bad = false) => { ui.status.textContent = text; ui.status.classList.toggle('is-error', bad); };
+  function normalizeCategory(value) {
+    const key = String(value || '').trim().toLowerCase().replace(/[\s_-]+/g, '');
+    const aliases = { roadbikes: 'road', mountainbikes: 'mountain', kidsbikes: 'kids', gravelbikes: 'gravel', ebikes: 'electric', electricbikes: 'electric', hybridbikes: 'hybrid', bmxbikes: 'bmx', triathlonbikes: 'triathlon', framesets: 'frameset', wheelstyres: 'wheels', 'wheel&tyres': 'wheels', turb_trainers: 'trainers' };
+    return aliases[key] || String(value || '').trim().toLowerCase();
+  }
   function renderCatalog() {
     const categoryNames = { road: 'Road bikes', mountain: 'Mountain bikes', kids: 'Kids bikes', gravel: 'Gravel bikes', electric: 'E-bikes', hybrid: 'Hybrid bikes', bmx: 'BMX bikes', triathlon: 'Triathlon', frameset: 'Framesets', accessories: 'Accessories', clothing: 'Clothing', components: 'Components', wheels: 'Wheels & tyres', trainers: 'Turbo trainers', nutrition: 'Nutrition', sale: 'Sale' };
-    const filteredProducts = activeCategory === 'all' ? products : products.filter(p => p.category === activeCategory);
+    const filteredProducts = activeCategory === 'all' ? products : products.filter(p => normalizeCategory(p.category) === activeCategory);
     document.querySelector('#catalog-eyebrow').textContent = activeCategory === 'all' ? 'Currently in the shop' : `Currently in the shop · ${categoryNames[activeCategory]}`;
     document.querySelector('#catalog-title').textContent = activeCategory === 'all' ? 'Bikes on the floor' : categoryNames[activeCategory];
     if (!filteredProducts.length) { ui.grid.innerHTML = `<p class="catalog-message">No ${activeCategory === 'all' ? '' : categoryNames[activeCategory].toLowerCase() + ' '}are listed right now. <button type="button" class="catalog-reset">Show all bikes</button></p>`; return; }
@@ -179,7 +184,7 @@
     if (!term && category === 'all') { searchResults.innerHTML = '<p>Start typing to search the shop.</p>'; return; }
     const found = products.filter(product => {
       const text = [product.name, product.subtitle, product.badge, product.category, ...(specs(product).flatMap(item => [item.label, item.value]))].join(' ').toLowerCase();
-      return (category === 'all' || product.category === category) && (!term || text.includes(term));
+      return (category === 'all' || normalizeCategory(product.category) === category) && (!term || text.includes(term));
     });
     searchResults.innerHTML = found.length ? found.map(product => `<a class="search-result" href="bike.html?id=${encodeURIComponent(product.id)}"><img src="${esc(product.image_url || 'assets/images/image-01.jpg')}" alt=""><div><strong>${esc(product.name)}</strong><span>${money(product.price)} · ${availability(product) ? 'In stock' : 'Sold out'}</span></div></a>`).join('') : '<p>No matching products found.</p>';
   }
