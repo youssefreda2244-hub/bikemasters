@@ -298,6 +298,19 @@
   .bike-price{color:var(--lime); font:700 24px 'Space Mono',monospace; margin-bottom:12px;}
   .bike-subtitle{font:13px 'Space Mono',monospace; color:var(--muted); margin-bottom:22px; text-transform:uppercase;}
   .bike-contact{margin-top:28px;}
+  .purchase-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:28px;}
+  .purchase-actions .btn{flex:1 1 170px; justify-content:center;}
+  .cart-modal{position:fixed; inset:0; z-index:500; display:flex; align-items:flex-start; justify-content:center; overflow:auto; padding:40px 18px; background:rgba(0,0,0,.72);}
+  .cart-modal[hidden]{display:none;}
+  .cart-dialog{position:relative; width:min(680px,100%); padding:32px; background:var(--surface); border:1px solid var(--hairline); box-shadow:0 24px 70px rgba(0,0,0,.5);}
+  .cart-close{position:absolute; top:16px; right:18px; border:0; background:none; color:var(--chalk); font-size:30px; cursor:pointer;}
+  .cart-dialog h2{margin:8px 0 24px; font-size:clamp(34px,6vw,54px);}
+  .cart-item{display:grid; grid-template-columns:64px 1fr 30px; gap:12px; align-items:center; padding:10px 0; border-bottom:1px solid var(--hairline);}
+  .cart-item img{width:64px; height:54px; object-fit:cover;}
+  .cart-item strong,.cart-item span{display:block;}.cart-item strong{font:600 18px 'Oswald',sans-serif; text-transform:uppercase;}.cart-item span{color:var(--muted); font:12px 'Space Mono',monospace; margin-top:4px;}.cart-item button{border:0; background:none; color:var(--muted); font-size:24px; cursor:pointer;}.cart-item button:hover{color:var(--lime);}
+  .cart-total{margin:20px 0 28px; color:var(--lime); font:700 16px 'Space Mono',monospace; text-transform:uppercase;}
+  .cart-dialog h3{margin:0 0 16px; font:600 24px 'Oswald',sans-serif; text-transform:uppercase;}.checkout-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}.checkout-grid label{display:grid; gap:6px; color:var(--muted); font:11px 'Space Mono',monospace; text-transform:uppercase;}.checkout-grid .full-width{grid-column:1/-1;}.checkout-grid input,.checkout-grid select{width:100%; padding:12px; border:1px solid var(--hairline); background:var(--asphalt); color:var(--chalk); font:14px 'Work Sans',sans-serif;}.checkout-submit{width:100%; justify-content:center; margin-top:20px;}.checkout-note{color:var(--muted); font-size:13px; margin-top:12px;}
+  body.cart-open{overflow:hidden;}
 
   /* ---------- WIDE GALLERY TICKET (featured build) ---------- */
   .ticket-wide{
