@@ -57,7 +57,7 @@
   }
   function openAdmin() {
     ui.modal.hidden = false; document.body.classList.add('admin-open');
-    checkAdmin().then(admin => { ui.login.hidden = admin; ui.dashboard.hidden = !admin; if (admin) { renderAdminProducts(); } else { document.querySelector('#login-email').focus(); } });
+    checkAdmin().then(admin => { ui.login.hidden = admin; ui.dashboard.hidden = !admin; if (admin) { renderAdminProducts(); renderAdminOrders(); } else { document.querySelector('#login-email').focus(); } });
   }
   function closeAdmin() { ui.modal.hidden = true; document.body.classList.remove('admin-open'); showStatus(''); }
   async function uploadPhoto(file) {
@@ -83,6 +83,13 @@
   function renderAdminProducts() {
     if (!isAdmin) return;
     ui.products.innerHTML = products.length ? products.map(p => `<div class="admin-product"><div><strong>${esc(p.name)}</strong><span>${availability(p) ? `Available · ${p.quantity} in stock` : 'Sold out'} · ${money(p.price)}</span></div><div><button class="btn btn-ghost" type="button" data-edit="${p.id}">Edit</button><button class="btn btn-danger" type="button" data-delete="${p.id}">Delete</button></div></div>`).join('') : '<p class="admin-note">No products yet — add the first one above.</p>';
+  }
+  async function renderAdminOrders() {
+    const box = document.querySelector('#admin-orders-list'); if (!isAdmin || !box) return;
+    const { data, error } = await db.from('orders').select('*, order_items(product_name, quantity, unit_price)').order('created_at', { ascending: false });
+    if (error) { box.innerHTML = '<p class="admin-note">Orders are not set up yet. Run orders-setup.sql in Supabase.</p>'; return; }
+    box.innerHTML = data?.length ? data.map(order => `<article class="admin-order"><div><strong>${esc(order.customer_name)}</strong><span>${new Date(order.created_at).toLocaleString()} · ${esc(order.phone)} · ${esc(order.city)}</span><span>${(order.order_items || []).map(item => `${esc(item.product_name)} × ${item.quantity}`).join(' · ')}</span></div><div><b>${money(order.total)}</b><select data-order-status="${order.id}"><option value="new" ${order.status === 'new' ? 'selected' : ''}>New</option><option value="confirmed" ${order.status === 'confirmed' ? 'selected' : ''}>Confirmed</option><option value="preparing" ${order.status === 'preparing' ? 'selected' : ''}>Preparing</option><option value="shipped" ${order.status === 'shipped' ? 'selected' : ''}>Shipped</option><option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Delivered</option><option value="cancelled" ${order.status === 'cancelled' ? 'selected' : ''}>Cancelled</option></select></div></article>`).join('') : '<p class="admin-note">No orders yet.</p>';
+    box.querySelectorAll('[data-order-status]').forEach(select => select.addEventListener('change', async () => { const result = await db.from('orders').update({ status: select.value }).eq('id', select.dataset.orderStatus); if (result.error) showStatus(result.error.message, true); }));
   }
   async function saveProduct(event) {
     event.preventDefault(); if (!isAdmin) return;
@@ -126,7 +133,7 @@
   document.querySelector('#login-form').addEventListener('submit', async e => {
     e.preventDefault(); showStatus('Signing in…'); const { error } = await db.auth.signInWithPassword({ email: document.querySelector('#login-email').value, password: document.querySelector('#login-password').value });
     if (error) return showStatus(error.message, true); if (!await checkAdmin()) { await db.auth.signOut(); return showStatus('This account is not an administrator.', true); }
-    ui.login.hidden = true; ui.dashboard.hidden = false; showStatus('Signed in.'); renderAdminProducts();
+    ui.login.hidden = true; ui.dashboard.hidden = false; showStatus('Signed in.'); renderAdminProducts(); renderAdminOrders();
   });
   document.querySelector('#sign-out').addEventListener('click', async () => { await db.auth.signOut(); isAdmin = false; ui.dashboard.hidden = true; ui.login.hidden = false; resetForm(); showStatus('Signed out.'); });
   ui.form.addEventListener('submit', saveProduct); ui.cancel.addEventListener('click', resetForm);

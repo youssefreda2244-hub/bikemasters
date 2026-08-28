@@ -283,6 +283,7 @@
   .admin-status{min-height:24px; margin-top:16px; color:var(--lime)!important; font-family:'Space Mono',monospace; font-size:12px;}
   .admin-status.is-error{color:#ff8484!important;}
   .admin-products{margin-top:34px; border-top:1px solid var(--hairline);}
+  .admin-orders{margin-top:34px; border-top:1px solid var(--hairline); padding-top:24px;}.admin-orders h3{font-size:26px; margin-bottom:14px;}.admin-order{display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid var(--hairline);}.admin-order strong,.admin-order span{display:block;}.admin-order strong{font:600 19px 'Oswald',sans-serif; text-transform:uppercase;}.admin-order span{color:var(--muted); font:11px 'Space Mono',monospace; margin-top:5px;}.admin-order b{display:block; color:var(--price); font:700 15px 'Work Sans',sans-serif; margin-bottom:8px;}.admin-order select{padding:7px; border:1px solid var(--hairline); background:var(--surface); color:var(--chalk);}
   .admin-product{display:flex; justify-content:space-between; gap:16px; align-items:center; padding:15px 0; border-bottom:1px solid var(--hairline);}
   .admin-product strong{display:block; font-family:'Oswald',sans-serif; font-size:20px; text-transform:uppercase;}
   .admin-product span{color:var(--muted); font-family:'Space Mono',monospace; font-size:11px;}
@@ -322,6 +323,7 @@
   .cart-dialog h3{margin:0 0 16px; font:600 24px 'Oswald',sans-serif; text-transform:uppercase;}.checkout-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}.checkout-grid label{display:grid; gap:6px; color:var(--muted); font:11px 'Space Mono',monospace; text-transform:uppercase;}.checkout-grid .full-width{grid-column:1/-1;}.checkout-grid input,.checkout-grid select{width:100%; padding:12px; border:1px solid var(--hairline); background:var(--asphalt); color:var(--chalk); font:14px 'Work Sans',sans-serif;}.checkout-submit{width:100%; justify-content:center; margin-top:20px;}.checkout-note{color:var(--muted); font-size:13px; margin-top:12px;}
   body.cart-open{overflow:hidden;}
   body.cart-page.cart-open{overflow:auto;}
+  .order-success{padding:24px 0; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);}.order-success h3{margin-bottom:10px;}.order-success p{color:var(--muted);}.order-success strong{color:var(--price);}
   .cart-page-main{min-height:100vh; padding-top:110px;}
   .cart-page .cart-modal{position:static; display:flex !important; min-height:100vh; padding:40px 18px 80px; background:var(--asphalt); align-items:flex-start;}
   .cart-page .cart-dialog{margin:0 auto;}
