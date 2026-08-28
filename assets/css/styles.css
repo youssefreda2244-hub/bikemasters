@@ -448,10 +448,10 @@
     .brand img{height:44px; width:44px;}
     .brand-text{ font-size:16px; }
     .brand-text span{ font-size:8px; margin-top:1px; }
-    .nav-cta{position:absolute; top:62px; right:18px;}
+    .nav-cta{display:none;}
     .nav-links{grid-column:2; grid-row:2; position:static; transform:none; display:flex; justify-content:stretch; order:3; width:auto; flex:1 1 0; gap:0; overflow:hidden; padding:2px 0 0;}
     .nav-category-toggle{display:none;}
-    .nav-links a{flex:1 1 25%; min-width:0; color:var(--chalk); font-size:11px; font-weight:700; letter-spacing:.01em; text-align:center; white-space:nowrap;}
+    .nav-links a, .nav-links .admin-link{flex:1 1 20%; min-width:0; color:var(--chalk); font-size:11px; font-weight:700; letter-spacing:.01em; text-align:center; white-space:nowrap;}
     .wrap{ padding:0 20px; }
     .hero{ padding-top:165px; }
     .meter-line{ font-size:11px; }
