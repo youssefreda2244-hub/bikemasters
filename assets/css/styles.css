@@ -437,6 +437,7 @@
   .footer-brand img{ height:28px; width:28px; border-radius:50%; }
   .footer-brand span{ font-family:'Oswald', sans-serif; text-transform:uppercase; font-size:13px; letter-spacing:.05em; color:var(--muted); }
   footer .fine{ font-family:'Space Mono', monospace; font-size:11px; color:var(--muted); letter-spacing:.03em; }
+  .footer-admin{margin-left:auto;}
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px){
