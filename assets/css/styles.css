@@ -311,6 +311,9 @@
   .cart-total{margin:20px 0 28px; color:var(--lime); font:700 16px 'Space Mono',monospace; text-transform:uppercase;}
   .cart-dialog h3{margin:0 0 16px; font:600 24px 'Oswald',sans-serif; text-transform:uppercase;}.checkout-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}.checkout-grid label{display:grid; gap:6px; color:var(--muted); font:11px 'Space Mono',monospace; text-transform:uppercase;}.checkout-grid .full-width{grid-column:1/-1;}.checkout-grid input,.checkout-grid select{width:100%; padding:12px; border:1px solid var(--hairline); background:var(--asphalt); color:var(--chalk); font:14px 'Work Sans',sans-serif;}.checkout-submit{width:100%; justify-content:center; margin-top:20px;}.checkout-note{color:var(--muted); font-size:13px; margin-top:12px;}
   body.cart-open{overflow:hidden;}
+  .cart-page-main{min-height:100vh; padding-top:110px;}
+  .cart-page .cart-modal{position:static; min-height:100vh; padding:40px 18px 80px; background:var(--asphalt); align-items:flex-start;}
+  .cart-page .cart-dialog{margin:0 auto;}
 
   /* ---------- WIDE GALLERY TICKET (featured build) ---------- */
   .ticket-wide{
