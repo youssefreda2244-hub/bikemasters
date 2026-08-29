@@ -15,6 +15,8 @@ drop policy if exists "Admins manage orders" on public.orders;
 drop policy if exists "Admins manage order items" on public.order_items;
 create policy "Admins manage orders" on public.orders for all to authenticated using (public.is_admin()) with check (public.is_admin());
 create policy "Admins manage order items" on public.order_items for all to authenticated using (public.is_admin()) with check (public.is_admin());
+grant select, update on public.orders to authenticated;
+grant select on public.order_items to authenticated;
 create or replace function public.place_order(order_data jsonb, items jsonb)
 returns uuid language plpgsql security definer set search_path = public
 as $$
