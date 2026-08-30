@@ -567,5 +567,6 @@
 /* Compact presentation: render the complete site at 80% size (20% smaller).
    The wider layout width keeps the scaled page filling the viewport instead
    of leaving an empty strip on the right. */
-html{zoom:.8;}
-body{width:125%;}
+html{zoom:1;}
+body{overflow-x:hidden;}
+@media (min-width:861px){html{zoom:.8;}}
