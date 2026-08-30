@@ -562,4 +562,10 @@
   .search-result span{display:block; margin-top:3px; color:var(--muted); font:11px 'Space Mono',monospace;}
   body.search-open{overflow:hidden;}
   @media(max-width:700px){.search-modal{padding:0; background:rgba(0,0,0,.72);}.search-dialog{width:100%; max-height:100vh; padding:20px 16px 30px; background:#fff; color:#111; border:0;}.search-header{margin-bottom:16px;}.search-header .eyebrow{color:#111; font-size:14px;}.search-close{border-color:#111; color:#111;}.search-bar{min-height:64px; border:3px solid #f2b400; border-radius:34px; background:#fff;}.search-bar select{max-width:130px; padding:0 10px; border-right:1px solid #777; background:#eee; color:#111; font-size:14px;}.search-bar input{padding:0 10px; color:#111; font-size:17px;}.search-bar input::placeholder{color:#777;}.search-icon{width:58px; height:58px; flex-basis:58px; color:#111; border:0; background:transparent;}.search-results{grid-template-columns:1fr;}.search-results > p{color:#333; font-size:17px;}.search-result{background:#f5f5f5; color:#111;}.search-result span{color:#555;}.nav-search-toggle{flex:0 0 38px;}}
-  @media(max-width:600px){.nav-search-toggle{flex:0 0 28px; width:28px; height:28px;}.nav-search-toggle::before{width:12px; height:12px; left:4px; top:4px; border-width:2px;}.nav-search-toggle::after{width:9px; height:2px; left:16px; top:17px;}}
+@media(max-width:600px){.nav-search-toggle{flex:0 0 28px; width:28px; height:28px;}.nav-search-toggle::before{width:12px; height:12px; left:4px; top:4px; border-width:2px;}.nav-search-toggle::after{width:9px; height:2px; left:16px; top:17px;}}
+
+/* Compact presentation: render the complete site at 80% size (20% smaller).
+   The wider layout width keeps the scaled page filling the viewport instead
+   of leaving an empty strip on the right. */
+html{zoom:.8;}
+body{width:125%;}
