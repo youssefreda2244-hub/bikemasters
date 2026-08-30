@@ -196,7 +196,7 @@
   function renderSearchResults() {
     const term = searchInput.value.trim().toLowerCase();
     const category = searchCategory.value;
-    if (!term && category === 'all') { searchResults.innerHTML = '<p>Start typing to search the shop.</p>'; return; }
+    if (!term && category === 'all') { searchResults.innerHTML = ''; return; }
     const found = products.filter(product => {
       const text = [product.name, product.subtitle, product.badge, product.category, ...(specs(product).flatMap(item => [item.label, item.value]))].join(' ').toLowerCase();
       return (category === 'all' || normalizeCategory(product.category) === category) && (!term || text.includes(term));
