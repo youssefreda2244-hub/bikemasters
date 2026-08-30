@@ -241,7 +241,7 @@
   .spec-list li span:first-child{ color:var(--muted); text-transform:uppercase; letter-spacing:.04em;}
   .spec-list li:last-child{border-bottom:none;}
   .ticket-cta{ margin-top:20px; display:flex; }
-  .ticket-cta .btn{background:#111820;color:#fff;border-color:#111820;}
+  .ticket-cta .btn{background:#111820;color:#fff;border-color:#111820;font-size:18px;font-weight:800;}
   .ticket-cta .btn:hover{background:#000;color:#fff;border-color:#000;}
   .ticket--sold-out .ticket-photo img{ filter:grayscale(1) brightness(.55); }
   .ticket--sold-out .ticket-photo::after{
