@@ -456,6 +456,7 @@
   .footer-brand span{ font-family:'Oswald', sans-serif; text-transform:uppercase; font-size:13px; letter-spacing:.05em; color:var(--muted); }
   footer .fine{ font-family:'Space Mono', monospace; font-size:11px; color:var(--muted); letter-spacing:.03em; }
   .footer-admin{margin-left:auto;}
+  .policy-page{padding-top:70px; padding-bottom:120px; max-width:820px;}.policy-page h1{font:600 clamp(42px,7vw,72px) 'Oswald',sans-serif; text-transform:uppercase; margin:16px 0 28px;}.policy-page h2{font:600 28px 'Oswald',sans-serif; text-transform:uppercase; margin:34px 0 10px;}.policy-page p{max-width:720px; color:var(--muted); margin-bottom:18px;}.policy-page .btn{display:inline-flex; margin-top:16px;}
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px){
