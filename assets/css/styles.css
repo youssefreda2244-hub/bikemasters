@@ -273,6 +273,7 @@
   .brand img{height:68px; width:68px;}
   @media (max-width:600px){.brand img{height:64px; width:64px;}}
   @media (min-width:861px){
+    .nav-links a,.nav-category-toggle{font-size:17px;}
     .nav-search-toggle{width:30px; height:30px; flex:0 0 30px;}
     .nav-search-toggle::before{width:14px; height:14px; left:5px; top:4px; border-width:2px;}
     .nav-search-toggle::after{width:9px; height:2px; left:18px; top:18px;}
