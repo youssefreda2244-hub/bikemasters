@@ -561,3 +561,5 @@
   @media(max-width:600px){.nav-search-toggle{flex:0 0 28px; width:28px; height:28px;}.nav-search-toggle::before{width:12px; height:12px; left:4px; top:4px; border-width:2px;}.nav-search-toggle::after{width:9px; height:2px; left:16px; top:17px;}}
   /* Inter typography for prices and customer-facing controls */
   .ticket-price,.bike-price,.cart-total,.drawer-page-price,.drawer-product b,.admin-order > div > b{font-family:'Inter',sans-serif!important;}
+  body, body *{font-family:'Inter',sans-serif!important;}
+  .cart-svg{font-family:initial!important;}
