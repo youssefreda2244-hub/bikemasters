@@ -570,3 +570,9 @@
 html{zoom:1;}
 body{overflow-x:hidden;}
 @media (min-width:861px){html{zoom:.8;}}
+
+/* Keep text over the hero image readable at every screen size. */
+.hero h1{color:#fff; text-shadow:0 3px 24px rgba(0,0,0,.72);}
+.hero h1 em{color:#d7ff32;}
+.hero .meter-line{color:#f3f6f8; text-shadow:0 1px 8px rgba(0,0,0,.8);}
+.hero .meter-line b{color:#d7ff32;}
