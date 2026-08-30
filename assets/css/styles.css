@@ -576,3 +576,7 @@ body{overflow-x:hidden;}
 .hero h1 em{color:#d7ff32;}
 .hero .meter-line{color:#f3f6f8; text-shadow:0 1px 8px rgba(0,0,0,.8);}
 .hero .meter-line b{color:#d7ff32;}
+.hero-bg{background-image:linear-gradient(180deg,rgba(20,23,26,.35) 0%,rgba(20,23,26,.62) 62%,#111820 100%),url('../images/hero-bikes-new.png');}
+.hero-actions .btn-primary{background:#111820;color:#fff;border-color:#111820;}
+.hero-actions .btn-primary:hover{background:#000;color:#fff;border-color:#000;}
+.hero-actions .btn-ghost{background:#111820;color:#fff;border-color:#fff;}
