@@ -37,7 +37,7 @@
         <div class="ticket-photo"><img src="${esc(p.image_url || 'assets/images/image-01.jpg')}" alt="${esc(p.name)}" loading="lazy">
         ${inStock && p.badge ? `<span class="ticket-badge">${esc(p.badge)}</span>` : ''}${inStock ? `<span class="ticket-price">${money(p.price)}</span>` : ''}${extraPhotoCount ? `<span class="ticket-photos" title="${extraPhotoCount} more photos">▣ +${extraPhotoCount}</span>` : ''}</div>
         <div class="ticket-body"><h3>${esc(p.name)}</h3><div class="ticket-sub">${esc(p.subtitle || (inStock ? `${p.quantity} IN STOCK` : 'SOLD OUT'))}</div><div class="ticket-perf"></div>
-        <ul class="spec-list">${rows || '<li><span>Stock</span><span>Contact shop for details</span></li>'}</ul>
+        <ul class="spec-list">${rows || ''}</ul>
         <div class="ticket-cta">${inStock ? `<span class="btn btn-ghost" style="width:100%; justify-content:center;">View bike details</span>` : ''}</div></div></a></article>`;
     }).join('');
   }
