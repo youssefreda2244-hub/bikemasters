@@ -551,8 +551,8 @@
   .search-bar select{align-self:stretch; max-width:210px; padding:0 18px; border:0; border-right:1px solid var(--hairline); background:var(--surface-raised); color:var(--chalk); font:14px 'Work Sans',sans-serif;}
   .search-bar input{min-width:0; flex:1; border:0; outline:0; padding:0 18px; background:transparent; color:var(--chalk); font:20px 'Work Sans',sans-serif;}
   .search-icon{position:relative; width:56px; height:56px; flex:0 0 56px; margin-right:3px; border:0; border-radius:0; color:var(--chalk); font-size:0; background:transparent;}
-  .search-icon::before{content:''; position:absolute; width:21px; height:21px; left:9px; top:8px; border:3px solid currentColor; border-radius:50%;}
-  .search-icon::after{content:''; position:absolute; width:14px; height:3px; left:29px; top:31px; background:currentColor; transform:rotate(45deg); transform-origin:left center; border-radius:2px;}
+  .search-icon::before{content:''; position:absolute; width:17px; height:17px; left:12px; top:11px; border:2px solid currentColor; border-radius:50%;}
+  .search-icon::after{content:''; position:absolute; width:11px; height:2px; left:28px; top:28px; background:currentColor; transform:rotate(45deg); transform-origin:left center; border-radius:2px;}
   .search-results{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:24px;}
   .search-results > p{grid-column:1/-1; color:var(--muted);}
   .search-result{display:flex; gap:12px; align-items:center; padding:10px; border:1px solid var(--hairline); background:var(--asphalt);}
