@@ -260,6 +260,14 @@
     font-family:'Space Mono', monospace;
     font-size:12px; text-transform:uppercase;
   }
+  .ticket--sold-out .ticket-cta::before,
+  .bike-copy > .catalog-message{
+    color:var(--chalk);
+    font-family:'Inter',sans-serif;
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:.02em;
+  }
   .ticket-photos{position:absolute; left:14px; bottom:14px; background:var(--asphalt); border:1px solid var(--hairline); color:var(--chalk); font:700 12px 'Space Mono',monospace; letter-spacing:.06em; padding:7px 10px; border-radius:var(--radius-s);}
   .ticket-link{display:block; height:100%;}
   .catalog-message{grid-column:1 / -1; color:var(--muted); font-family:'Space Mono',monospace; font-size:13px; padding:24px 0;}
