@@ -34,10 +34,11 @@ create table if not exists public.admins (
 );
 
 create or replace function public.is_admin()
-returns boolean language sql stable security definer set search_path = public
+returns boolean language sql stable security definer set search_path = ''
 as $$ select exists (select 1 from public.admins where user_id = auth.uid()); $$;
 
-grant execute on function public.is_admin() to anon, authenticated;
+revoke all on function public.is_admin() from public;
+grant execute on function public.is_admin() to authenticated;
 alter table public.products enable row level security;
 alter table public.admins enable row level security;
 

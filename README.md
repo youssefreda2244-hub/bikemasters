@@ -16,6 +16,8 @@ Static website with a Supabase-powered product catalog and private admin dashboa
 
 Open **Supabase → SQL Editor → New query**, paste the complete contents of [`supabase-setup.sql`](supabase-setup.sql), and click **Run**. It creates (or completes) the exact fields the website uses and locks down editing so only users listed in `public.admins` can add, edit, or delete products. The same SQL is included below for convenience.
 
+After that, run the complete [`orders-setup.sql`](orders-setup.sql) file. It enables orders, requires policy acceptance before checkout, and prevents direct browser access to customer order records.
+
 ```sql
 create extension if not exists pgcrypto;
 
