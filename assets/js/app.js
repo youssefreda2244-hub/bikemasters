@@ -210,5 +210,13 @@
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && !searchModal.hidden) closeSearch(); });
   document.querySelectorAll('[data-product-category]').forEach(link => link.addEventListener('click', () => { activeCategory = link.dataset.productCategory; renderCatalog(); }));
   ui.grid.addEventListener('click', e => { if (e.target.closest('.catalog-reset')) { activeCategory = 'all'; renderCatalog(); } });
+  const revealSections = document.querySelectorAll('main > section:not(.hero)');
+  revealSections.forEach(section => section.classList.add('scroll-reveal'));
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+    }), { threshold: .12 });
+    revealSections.forEach(section => observer.observe(section));
+  } else revealSections.forEach(section => section.classList.add('is-visible'));
   db.auth.onAuthStateChange(() => checkAdmin()); loadProducts();
 })();
