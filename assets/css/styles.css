@@ -226,6 +226,7 @@
   }
   .ticket-body{ padding:26px 26px 28px; }
   .ticket-body h3{ font-size:26px; margin-bottom:2px; }
+  .ticket-card-price{margin:5px 0 4px;color:var(--price);font-size:20px;font-weight:800;}
   .ticket-sub{ color:var(--muted); font-size:13px; font-family:'Space Mono', monospace; margin-bottom:18px; }
   .ticket-perf{
     border-top:1px dashed var(--hairline);
