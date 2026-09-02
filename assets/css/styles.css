@@ -183,6 +183,7 @@
 
   /* ---------- SECTION SHELL ---------- */
   section{ padding:110px 0; border-bottom:1px solid var(--hairline); }
+  #services,#about,#contact{content-visibility:auto; contain-intrinsic-size:auto 800px;}
   .section-head{
     display:flex; justify-content:space-between; align-items:flex-end;
     gap:24px; margin-bottom:56px; flex-wrap:wrap;
